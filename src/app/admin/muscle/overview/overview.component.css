@@ -1,0 +1,36 @@
+.upper {
+  float: left;
+  margin: 5px;
+  padding: 15px;
+}
+
+.container {
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+  padding: 5px;
+  border: 1px black;
+  border-spacing: 0;
+}
+
+
+
+th {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 90%;
+  border-bottom: 3px solid #6002ee;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  margin: 1px;
+}
+
+
+tr:hover {
+  background-color: #efe5fd;
+}

@@ -1,0 +1,32 @@
+<div class="upper">
+  <div class="container">
+
+    <form novalidate [formGroup]="form" (ngSubmit)="createUser(form)">
+      <div
+        *ngFor="let control of form.accountRegistrationControls">
+        <mat-form-field>
+          <label>
+            <input type="{{control.type}}"
+                   matInput placeholder="{{control.label}}"
+                   name="{{control.property}}"
+                   formControlName="{{control.property}}"
+            (input)="user.info[control.property] !== undefined ?  user.info[control.property] = control.value : user[control.property] = control.value"/>
+          </label>
+        </mat-form-field>
+        <ul *ngIf="(submitAttempted || control.dirty) && control.invalid">
+          <mat-error *ngFor="let error of control.getValidationErrorMessages()">
+            - {{error}}
+          </mat-error>
+        </ul>
+      </div>
+      <button mat-raised-button
+              color="primary"
+              [disabled]="form.invalid"
+              type="submit"> Register</button>
+    </form>
+
+    <div class="backLogin">
+      Click <a routerLink="/login">here</a> to go back to the login screen.
+    </div>
+  </div>
+</div>

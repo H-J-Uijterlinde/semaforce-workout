@@ -1,0 +1,30 @@
+<div class="upper">
+  <mat-form-field>
+    <input type="name"
+           [(ngModel)]="muscle.name"
+           matInput placeholder="Enter the common name of the muscle"
+           name="name"
+           [formControl]="name"
+           id="name">
+    <mat-error *ngIf="name.invalid">
+      {{getErrorMessage(name)}}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="name"
+           [(ngModel)]="muscle.scientificName"
+           matInput placeholder="Enter the scientific name of the muscle"
+           name="scientificName"
+           [formControl]="scientificName"
+           id="scientificName">
+    <mat-error
+      *ngIf="scientificName.invalid">
+      {{getErrorMessage(scientificName)}}
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button
+          (click)="createMuscle()">Add Muscle
+  </button>
+</div>

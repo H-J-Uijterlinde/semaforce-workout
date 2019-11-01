@@ -1,0 +1,196 @@
+<div class="upper">
+  <div class="container">
+    <mat-vertical-stepper linear="true" #stepper>
+
+      <mat-step label="configuration">
+        <ng-template matStepLabel>
+          Workout configuration
+        </ng-template>
+
+        <div class="form-container">
+          <form class="workout-configuration-form"
+                novalidate
+                #form="ngForm"
+                (ngSubmit)="saveWorkoutConfiguration(form)">
+            <mat-form-field>
+              <input type="name"
+                     [(ngModel)]="workout.referenceName"
+                     matInput placeholder="Reference name"
+                     name="referenceName"
+                     required>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Consecutive weeks</mat-label>
+              <mat-select [(ngModel)]="workout.numWeeks" name="numWeeks" required>
+                <mat-option *ngFor="let week of numWeeks" [value]="week">
+                  {{week}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Workout days per week</mat-label>
+              <mat-select [(ngModel)]="workout.daysPerWeek" name="daysPerWeek" required>
+                <mat-option *ngFor="let days of daysPerWeek" [value]="days">
+                  {{days}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button
+                    color="primary"
+                    type="submit"
+                    matStepperNext
+                    [disabled]="form.invalid || configurationDisabled">
+              Save
+            </button>
+          </form>
+        </div>
+
+      </mat-step>
+
+      <mat-step label="Select exercises">
+        <ng-template matStepLabel>
+          Select Exercises
+        </ng-template>
+
+        <form novalidate #selectExercisesFrom="ngForm">
+          <mat-tab-group color="primary">
+            <mat-tab *ngFor="let dayNumber of dayNumbers" [label]="'Day ' + dayNumber">
+              <div class="select-exercises-container">
+                <div class="accordion-holder">
+                  <mat-accordion>
+
+                    <button class="select-exercises-button extra-top-margin"
+                            (click)="openDialog(dayNumber, true)"
+                            *ngIf="exerciseNumbersPerDay[dayNumber - 1].length === 0">
+                      Select exercises
+                    </button>
+                    <div *ngFor="let exerciseNumber of exerciseNumbersPerDay[dayNumber - 1]">
+                      <div class="panel-holder">
+                        <div class="up-down-buttons">
+
+                          <button class="up-button"
+                                  (click)="moveExerciseUp(dayNumber, exerciseNumber)">
+                            <mat-icon>arrow_drop_up</mat-icon>
+                          </button>
+
+                          <button class="down-button"
+                                  (click)="moveExerciseDown(dayNumber, exerciseNumber)">
+                            <mat-icon>arrow_drop_down</mat-icon>
+                          </button>
+
+                        </div>
+                        <mat-expansion-panel>
+
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              {{workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].exercise?.name || 'Select Exercise ' + exerciseNumber}}
+                            </mat-panel-title>
+                            <mat-panel-description *ngIf="(workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.numSets !== 0 &&
+                                                       workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.minReps !== 0 &&
+                                                       workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.maxReps !== 0)">
+                              {{workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.numSets}}
+                              sets <br>
+                              {{workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.minReps}}
+                              -
+                              {{workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.maxReps}}
+                              reps
+                            </mat-panel-description>
+
+                          </mat-expansion-panel-header>
+
+
+                          <div class="content-holder">
+                            <button class="select-exercises-button"
+                                    (click)="openDialog(dayNumber, false, exerciseNumber)">Change exercise
+                            </button>
+
+                            <mat-form-field>
+                              <input type="number"
+                                     name="numSets"
+                                     [(ngModel)]="workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.numSets"
+                                     matInput placeholder="Number of sets"
+                                     required>
+
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <input type="number"
+                                     name="minReps"
+                                     [(ngModel)]="workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.minReps"
+                                     matInput placeholder="Minimum number of repetitions"
+                                     required>
+
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <input type="number"
+                                     name="maxReps"
+                                     [(ngModel)]="workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.maxReps"
+                                     matInput placeholder="Maximum number of repetitions"
+                                     required>
+
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <input type="number"
+                                     name="restBetweenSets"
+                                     [(ngModel)]="workout.trainingDays[dayNumber - 1].scheduledExercises[exerciseNumber - 1].configuration.restBetweenSets"
+                                     matInput placeholder="Rest between sets (seconds)">
+
+                            </mat-form-field>
+
+                            <button class="select-exercises-button remove-exercise-button"
+                                    (click)="removeScheduledExercise(dayNumber, exerciseNumber)">Remove Exercise
+                            </button>
+                          </div>
+
+
+                        </mat-expansion-panel>
+                      </div>
+
+                      <mat-divider></mat-divider>
+                    </div>
+
+                  </mat-accordion>
+                </div>
+
+
+                <div class="add-exercise">
+                  <button
+                    class="add-exercise-button"
+                    (click)="addExercise(dayNumber, exerciseNumbersPerDay[dayNumber-1].length + 1)"
+                    [class.invisible]="workout.trainingDays[dayNumber-1].scheduledExercises.length < 1">Add Exercise +
+                  </button>
+                </div>
+
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </form>
+        <button mat-raised-button
+                color="primary"
+                matStepperNext
+                (click)="showWorkout(form)">
+          Save
+        </button>
+      </mat-step>
+
+      <mat-step label="Save">
+        <ng-template matStepLabel>Save Workout</ng-template>
+        <p>Are you sure you want to save this workout?</p><br>
+        <button mat-raised-button
+                class="save-button"
+                color="primary"
+                type="submit"
+                [disabled]="!checkValidity(form)"
+                (click)="saveWorkout(form)">
+          Save
+        </button>
+      </mat-step>
+
+    </mat-vertical-stepper>
+  </div>
+</div>

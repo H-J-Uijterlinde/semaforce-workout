@@ -1,0 +1,40 @@
+<div class="workout-menu">
+  <h3 class="workout-menu-header">
+    Workouts
+  </h3>
+
+  <mat-expansion-panel hideToggle="false">
+    <mat-expansion-panel-header collapsedHeight="'auto'"
+                                expandedHeight="'auto'">
+      <a
+        class="workout-menu-item"
+      >
+        Current
+      </a>
+    </mat-expansion-panel-header>
+
+    <mat-action-row *ngFor="let day of dayNumber">
+      <a class="sub-menu-item"
+         [routerLink]="'/workouts/current_workout/' + day">
+        Day {{day}}
+      </a>
+    </mat-action-row>
+
+  </mat-expansion-panel>
+
+  <mat-divider></mat-divider>
+  <a
+    class="workout-menu-item"
+    routerLink="/workouts/create_workout">
+    Create new
+  </a>
+  <mat-divider></mat-divider>
+  <a
+    class="workout-menu-item"
+    routerLink="/workouts/previous_workouts">
+    Previous
+  </a>
+</div>
+
+<router-outlet></router-outlet>
+

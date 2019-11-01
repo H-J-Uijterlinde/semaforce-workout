@@ -1,0 +1,46 @@
+.upper {
+  float: left;
+  position: center;
+  margin-left: 75px;
+  padding: 5px;
+  min-width: 200px;
+}
+
+.container {
+  padding: 5px;
+  border: 5px #512da8;
+}
+
+
+table {
+  background-color: inherit;
+  width: auto;
+  padding: 5px;
+  box-shadow: 0 0 0 black;
+}
+
+th, td {
+  padding: 5px 15px 5px 5px;
+}
+
+tr {
+  text-align: left;
+}
+
+th {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 90%;
+  border-bottom: 3px solid #6002ee;
+}
+
+td.uneven {
+  padding-right: 20px;
+  border: 5px black !important;
+}
+
+
+tr:hover {
+  background-color: #efe5fd;
+}
+

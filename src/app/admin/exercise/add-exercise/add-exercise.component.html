@@ -1,0 +1,148 @@
+<div class="upper">
+  <div class="container">
+    <mat-vertical-stepper [linear]="true" #stepper>
+
+      <mat-step label="name">
+        <ng-template matStepLabel>
+          Exercise Name
+        </ng-template>
+        <form novalidate #nameForm="ngForm">
+          <mat-form-field>
+            <input type="name"
+                   [(ngModel)]="exercise.name"
+                   matInput placeholder="Enter the name of the exercise"
+                   name="name"
+                   class="form-control"
+                   id="name"
+                   required
+                   minlength="4"
+                   maxlength="30"
+                   pattern="[A-Za-z -]*">
+          </mat-form-field>
+          <div>
+            <button
+              [disabled]="!nameForm.valid"
+              mat-button matStepperNext>Next
+            </button>
+          </div>
+        </form>
+
+      </mat-step>
+
+      <mat-step label="category">
+        <ng-template matStepLabel>
+          Exercise Category
+        </ng-template>
+        <label id="category-radio-group">
+          <div class="target-muscle-text">Select the exercise category:</div>
+        </label>
+        <form novalidate #categoryForm="ngForm">
+          <p>
+
+            <mat-radio-group
+              aria-labelledby="category-radio-group"
+              class="category-radio"
+              name="category-radio"
+              [(ngModel)]="exercise.category"
+              required>
+              <mat-radio-button
+                class="category-radio-button"
+                *ngFor="let category of categories"
+                [value]="category">
+                {{category.valueOf()}}
+              </mat-radio-button>
+            </mat-radio-group>
+
+
+          </p>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button
+                    [disabled]="!categoryForm.valid"
+                    matStepperNext>Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+
+      <mat-step label="target muscles">
+        <ng-template matStepLabel>
+          Muscle Group
+        </ng-template>
+        <label id="muscleGroup-radio-group">
+          <div class="target-muscle-text">Select the muscle group:</div>
+        </label>
+        <form novalidate #muscleGroupForm="ngForm">
+          <p>
+
+            <mat-radio-group
+              aria-labelledby="category-radio-group"
+              class="category-radio"
+              name="muscleGroup-radio"
+              [(ngModel)]="exercise.muscleGroup"
+              required>
+              <mat-radio-button
+                class="category-radio-button"
+                *ngFor="let muscleGroup of muscleGroups"
+                [value]="muscleGroup">
+                {{muscleGroup.valueOf()}}
+              </mat-radio-button>
+            </mat-radio-group>
+
+
+          </p>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button
+                    [disabled]="!muscleGroupForm.valid"
+                    matStepperNext>Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step label="assistance muscles">
+        <ng-template matStepLabel>
+          Muscles Trained
+        </ng-template>
+        <div class="target-muscle-text">Select the muscles trained with this exercise:</div>
+        <button mat-raised-button color="primary"
+                (click)="openAssistanceMusclesDialog()">
+          Click to select
+        </button>
+        <div
+          *ngIf="exercise.musclesTrained[0]"
+          class="target-muscle-text">Selected assistance muscle(s):
+          <ul>
+            <li *ngFor="let muscle of this.exercise.musclesTrained">
+              {{muscle.name}}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step label="submit">
+        <ng-template matStepLabel>
+          Submit Exercise
+        </ng-template>
+
+        <div>
+          <button class="submit-exercise-button"
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!nameForm.valid && !categoryForm.valid && !muscleGroupForm.valid"
+                  (click)="createExercise(nameForm, categoryForm)">
+            Save Exercise
+          </button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+</div>

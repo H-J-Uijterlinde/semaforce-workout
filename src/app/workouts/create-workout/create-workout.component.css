@@ -1,0 +1,141 @@
+.upper {
+  background-color: rgba(255, 242, 223, 0.31);
+}
+
+.container {
+  overflow-x: auto;
+}
+
+.workout-configuration-form {
+  display: inherit;
+  flex-direction: inherit;
+  background-color: inherit;
+}
+
+.mat-raised-button {
+  margin-top: 25px;
+}
+
+mat-vertical-stepper {
+  background-color: inherit;
+}
+
+.select-exercises-container {
+  margin-top: 15px;
+  padding: 5px;
+}
+
+.add-exercise-button {
+  margin: 10px;
+  padding: 5px;
+  background-color: inherit;
+}
+
+.select-exercises-button {
+  background-color: inherit;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 15px;
+}
+
+.add-exercise {
+  width: inherit;
+  text-align: right;
+}
+
+.accordion-holder {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 15px;
+  border: 2px inset #512da8;
+  box-shadow: inset 3px 3px 3px #000000;
+  border-radius: 20px;
+  background-color: white;
+}
+
+mat-expansion-panel {
+  background-color: white;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: left;
+}
+
+::ng-deep.mat-tab-label, .mat-ripple, .ng-star-inserted, .mat-tab-label-active {
+  min-width: auto !important;
+}
+
+.form-container {
+  display: inline-flex;
+  flex-direction: column;
+  background-color: inherit;
+  min-width: 220px !important;
+}
+
+.extra-top-margin {
+  margin-top: 25px;
+}
+
+.mat-expansion-panel-header-description {
+  text-align: left;
+  display: block;
+  margin-left: 15px;
+  padding: 5px 15px 0 15px;
+}
+
+.mat-expansion-panel-header-title {
+  padding: 15px 0 15px 0;
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+  min-width: 225px !important;
+}
+
+div.content-holder {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.panel-holder {
+  display: flex;
+  flex-direction: row;
+}
+
+.up-down-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.up-button, .down-button {
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  color: #512da8;
+}
+
+.mat-expansion-panel-header {
+  text-align: center;
+  margin-top: 9px;
+}
+
+.mat-icon {
+  font-size: 32px;
+}
+
+p {
+  margin-top: 15px;
+}
+
+.save-button {
+  margin-top: 0px;
+}
+
+.remove-exercise-button {
+  color: red;
+}
+
+.invisible {
+  visibility: hidden;
+}

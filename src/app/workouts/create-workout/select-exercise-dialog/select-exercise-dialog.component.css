@@ -1,0 +1,36 @@
+.select-exercises-dialog {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  max-height: 750px;
+}
+
+.exercise-list-container {
+  padding: 20px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.hold-filter-container {
+  overflow-y: auto !important;
+}
+
+mat-selection-list {
+  outline-color: white;
+}
+
+span {
+  text-align: center;
+}
+
+.mat-raised-button {
+  margin: 15px 15px 0 40px;
+  position: center;
+  background-color: rgba(81,45,168,0.51);
+}
+
+mat-divider {
+  background-color: rgba(239, 229, 253, 0.51);
+}

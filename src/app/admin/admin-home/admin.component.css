@@ -1,0 +1,17 @@
+.inner {
+  text-align: center;
+  margin-top: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.upper {
+  background-color: #efe5fd;
+  margin-left: 25px;
+}
+
+mat-icon {
+  font-size: 400%;
+}
+
+

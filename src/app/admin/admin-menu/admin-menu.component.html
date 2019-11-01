@@ -1,0 +1,91 @@
+<div class="admin-menu">
+  <mat-accordion
+    class="admin-menu-accordeon">
+
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)"
+                         hideToggle="false">
+      <mat-expansion-panel-header collapsedHeight="'auto'"
+                                  expandedHeight="'auto'">
+        <mat-panel-title>
+           Users
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-action-row>
+        <a
+          class="sub-menu-item"
+          routerLink="/admin/users">
+          Overview
+        </a>
+
+      </mat-action-row>
+
+      <mat-action-row>
+        Statistics
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-divider></mat-divider>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="false">
+      <mat-expansion-panel-header collapsedHeight="'auto'"
+                                  expandedHeight="'auto'">
+        <mat-panel-title>
+           Exercises
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-action-row>
+        <a
+          class="sub-menu-item"
+          routerLink="/admin/exercise"> Overview </a>
+      </mat-action-row>
+
+      <mat-action-row>
+        <a
+          class="sub-menu-item"
+          routerLink="/admin/add-exercise"> Add Exercise </a>
+      </mat-action-row>
+
+      <mat-action-row>
+        Statistics
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-divider></mat-divider>
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="false">
+      <mat-expansion-panel-header collapsedHeight="'auto'"
+                                  expandedHeight="'auto'">
+        <mat-panel-title>
+           Muscles
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-action-row>
+        <a
+          class="sub-menu-item"
+          routerLink="/admin/muscle"> Overview </a>
+      </mat-action-row>
+
+      <mat-action-row>
+        <a
+          class="sub-menu-item"
+          routerLink="/admin/add-muscle"> Add Muscle </a>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<router-outlet></router-outlet>
+
+<!--<mat-list>-->
+<!--  <mat-list-item><a routerLink="/admin/users"> Users </a></mat-list-item>-->
+<!--  <mat-divider></mat-divider>-->
+<!--  <mat-list-item><a routerLink="/exercises"> Exercises</a></mat-list-item>-->
+<!--  <mat-divider></mat-divider>-->
+<!--  <mat-list-item>-->
+<!--    <a routerLink="/admin/muscle"> Muscles </a>-->
+<!--  </mat-list-item>-->
+<!--  <mat-divider></mat-divider>-->
+<!--</mat-list>-->

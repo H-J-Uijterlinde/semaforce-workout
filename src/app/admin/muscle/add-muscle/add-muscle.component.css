@@ -1,0 +1,17 @@
+.upper {
+  width: 300px;
+  padding: 25px
+}
+
+button {
+  background-color: #9675cd;
+  color: white;
+  margin: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+}
+
+.mat-form-field-invalid {
+  margin-bottom: 25px;
+}

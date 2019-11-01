@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Select Muscles</h2>
+
+<mat-dialog-content class="mat-typography">
+  <mat-selection-list *ngIf="data.primaryMuscle"
+                      [(ngModel)]="data.selectedMuscles">
+    <mat-list-option *ngFor="let muscle of muscles" [value]="muscle" (click)="select()">
+      {{muscle.name}}
+      <mat-divider></mat-divider>
+    </mat-list-option>
+
+
+  </mat-selection-list>
+
+  <mat-selection-list *ngIf="!data.primaryMuscle"
+                      [(ngModel)]="data.selectedMuscles">
+    <mat-list-option *ngFor="let muscle of muscles" [value]="muscle">
+      {{muscle.name}}
+      <mat-divider></mat-divider>
+    </mat-list-option>
+
+
+  </mat-selection-list>
+
+</mat-dialog-content>
+
+<span>
+    <button *ngIf="!data.primaryMuscle"
+            mat-raised-button
+            [mat-dialog-close]="true"
+            (click)="select()">Select
+    </button>
+</span>

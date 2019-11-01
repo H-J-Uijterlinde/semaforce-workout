@@ -1,0 +1,37 @@
+<div class="upper">
+  <div class="container">
+    <table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+      <!-- Username Column -->
+      <ng-container matColumnDef="Username">
+        <th *matHeaderCellDef> Username</th>
+        <td *matCellDef="let userView"> {{userView.username}} </td>
+      </ng-container>
+
+      <!-- email Column -->
+      <ng-container
+        matColumnDef="email">
+        <th *matHeaderCellDef> email</th>
+        <td
+          *matCellDef="let userView"> {{userView.email}} </td>
+      </ng-container>
+
+      <!-- Delete Column -->
+      <ng-container
+        matColumnDef="delete">
+        <th
+          *matHeaderCellDef></th>
+        <td
+          *matCellDef="let userView">
+          <button mat-raised-button color="accent"
+                  (click)="deleteUser(userView)">
+            Delete
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

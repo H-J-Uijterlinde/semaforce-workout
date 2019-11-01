@@ -1,0 +1,67 @@
+.workout-menu {
+  padding: 30px 15px 30px 25px;
+  background-color: rgba(27, 48, 57, 0.63);
+  margin: 10% 10px 50% 25px;
+  max-width: 200px;
+  border: 2px inset #140078;
+  box-shadow: inset 2px 2px 2px black;
+  border-radius: 20px;
+  float: left;
+}
+
+
+.workout-menu-header {
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 35px;
+}
+
+.workout-menu-item {
+  text-decoration: none;
+}
+
+.workout-menu-item, .workout-menu-header {
+  color: whitesmoke;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.mat-divider {
+  margin: 15px 0 15px;
+}
+
+.mat-expansion-panel-header-title {
+  text-decoration: none;
+  text-align: left;
+  color: whitesmoke;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.mat-action-row {
+  padding: 5px 5px 5px 5px !important;
+  justify-content: flex-start;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: whitesmoke;
+}
+
+.sub-menu-item {
+  color: inherit;
+  text-transform: uppercase;
+  letter-spacing: inherit;
+  text-decoration: none;
+}
+
+mat-expansion-panel {
+  background-color: rgba(107, 120, 126, 0.63);
+  box-shadow: none !important;
+  text-align: left;
+}
+
+mat-expansion-panel-header {
+  padding: 0 2px;
+  font-size: 16px;
+}
+

@@ -1,0 +1,53 @@
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px dotted #9965f4;
+  padding: 50px 10px 50px 10px;
+  margin-right: 10px;
+}
+
+.filter-divider {
+  margin-bottom: 25px;
+  background-color: #7e3ff2;
+}
+
+.select-category-text {
+  margin-bottom: 15px;
+  color: rgba(23, 23, 23, 0.9) !important;
+}
+
+.category-radio {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.category-radio-button {
+  margin: 5px 5px 5px 50px;
+}
+
+h3 {
+  margin-bottom: 10px;
+  margin-top: 35px;
+}
+
+h5 {
+  margin-top: 5px;
+}
+
+mat-icon {
+  bottom: 0;
+}
+
+.remove-muscle-button {
+  background-color: inherit;
+  border: none;
+  color: blue;
+  margin-left: 25px;
+  font-style: italic;
+}
+
+.select-primary-button {
+  background-color: inherit;
+  border: none;
+}

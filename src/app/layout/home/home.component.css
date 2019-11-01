@@ -1,0 +1,20 @@
+.inner {
+  text-align: center;
+  margin-top: 35%;
+  margin-bottom: 60%;
+}
+
+.upper {
+  background-color: #efe5fd;
+  width: 500px;
+  height: 500px;
+}
+
+mat-icon {
+  font-size: 1000%;
+}
+
+.icon {
+  margin-left: 35%;
+  margin-right: 60%;
+}

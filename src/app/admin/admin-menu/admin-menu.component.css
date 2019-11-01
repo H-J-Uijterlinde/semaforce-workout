@@ -1,0 +1,57 @@
+.admin-menu {
+  padding: 30px 15px 15px;
+  background-color: rgba(27, 48, 57, 0.63);
+  margin: 10% 10px 50% 25px;
+  max-width: 200px;
+  min-height: 250px;
+  border: 2px inset #140078;
+  box-shadow: inset 2px 2px 2px black;
+  border-radius: 20px;
+  float: left;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.mat-expansion-panel-header-title {
+  text-decoration: none;
+  color: whitesmoke;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+mat-expansion-panel {
+  background-color: inherit;
+  box-shadow: none !important;
+  text-align: left;
+}
+
+.mat-action-row {
+  padding: 5px 5px 5px 5px !important;
+  justify-content: flex-start;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: whitesmoke;
+}
+
+.mat-divider {
+  margin: 15px 0 15px;
+}
+
+.sub-menu-item {
+  color: inherit;
+  text-transform: none;
+  letter-spacing: inherit;
+}
+
+.category {
+  text-transform: lowercase;
+}
+
+
+
+

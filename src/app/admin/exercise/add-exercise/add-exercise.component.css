@@ -1,0 +1,53 @@
+.upper {
+  min-width: 400px;
+  margin-left: 75px;
+}
+
+mat-vertical-stepper {
+  background-color: inherit !important;
+}
+
+.mat-form-field {
+  width: 225px !important;
+}
+
+.mat-button {
+  background-color: rgba(69, 90, 100, 0.51);
+  color: white;
+  margin: 5px 40px 0 40px;
+}
+
+div.mat-vertical-content {
+  padding-bottom: 10px;
+}
+
+.category-radio {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.category-radio-button {
+  margin: 5px 5px 5px 50px;
+}
+
+.mat-raised-button {
+  margin: 5px 0 25px 10px;
+}
+
+.target-muscle-text {
+  margin-bottom: 15px;
+  color: rgba(23, 23, 23, 0.9) !important;
+}
+
+.submit-exercise-button {
+  margin-top: 25px;
+}
+
+ul{
+  list-style-type: square;
+  text-transform: uppercase;
+  letter-spacing: 0.15EM;
+  font-weight: bolder;
+  color: #171717;
+}

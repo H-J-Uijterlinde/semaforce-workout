@@ -1,0 +1,45 @@
+<form novalidate #form="ngForm" (ngSubmit)="checkLogin()">
+  <div class="upper">
+    <div class="container">
+
+      <mat-form-field>
+        <input type="text"
+               name="username"
+               [(ngModel)]="username"
+               class="form-control"
+               id="username"
+               matInput placeholder="Username"
+               required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="password"
+               name="password"
+               [(ngModel)]="password"
+               class="form-control"
+               id="password"
+               matInput placeholder="Password"
+               required
+               minlength="8">
+      </mat-form-field>
+
+      <button mat-raised-button
+              color="primary"
+              [disabled]="form.invalid"
+              (click)="checkLogin()">
+        Login
+      </button>
+
+      <div class="register">
+        Click <a routerLink="/register">here</a> to create an account.
+      </div>
+    </div>
+
+  </div>
+</form>
+
+
+
+
+
+

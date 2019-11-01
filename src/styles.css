@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+background-color: whitesmoke;
+}
+
+/*the .container and .upper are two div classes, which when used together,
+   center the content on the screen.*/
+
+.container {
+  text-align: center;
+  padding: 25px;
+  display: inherit;
+  flex-direction: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.upper {
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  padding: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px outset black;
+  box-shadow: 3px 3px 3px #1c1a1a;
+  border-radius: 5px;
+  min-width: auto;
+  min-height: auto;
+  max-height: 600px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: rgba(255, 242, 223, 0.31);
+}
+
+.bg-gray{
+  background-color: rgba(202, 202, 203, 0.54);
+}
+
+
+

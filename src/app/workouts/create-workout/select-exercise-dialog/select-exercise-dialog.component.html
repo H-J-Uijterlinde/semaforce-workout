@@ -1,0 +1,52 @@
+<div class="select-exercises-dialog">
+
+  <div class="hold-filter-container">
+    <app-filter-exercises
+      (exercisesEvent)="setExercises($event)">
+    </app-filter-exercises>
+  </div>
+
+
+  <div class="exercise-list-container">
+    <h2 mat-dialog-title>Select Exercise</h2>
+
+    <mat-dialog-content class="mat-typography">
+      <mat-selection-list
+        *ngIf="data.multi"
+        [(ngModel)]="data.selectedExercise">
+        <mat-list-option *ngFor="let exercise of exercises"
+                         [value]="exercise"
+                         (click)="addOrRemoveExercise(exercise)"
+                         [selected]="selectedExercises.has(exercise.id)">
+          {{exercise.name}}
+          <mat-divider></mat-divider>
+        </mat-list-option>
+
+
+      </mat-selection-list>
+
+      <mat-selection-list
+        *ngIf="!data.multi"
+        [(ngModel)]="data.selectedExercise">
+        <mat-list-option *ngFor="let exercise of exercises" [value]="exercise" (click)="select()">
+          {{exercise.name}}
+          <mat-divider></mat-divider>
+        </mat-list-option>
+
+
+      </mat-selection-list>
+
+    </mat-dialog-content>
+
+    <span>
+      <button *ngIf="data.multi"
+              mat-raised-button
+              [mat-dialog-close]="true"
+              (click)="select()">Select
+      </button>
+    </span>
+  </div>
+</div>
+
+
+

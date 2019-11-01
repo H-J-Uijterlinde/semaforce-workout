@@ -1,0 +1,58 @@
+mat-toolbar {
+  background-color: #1b3039;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+mat-icon {
+  margin-top: 50%;
+  font-size: 150%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-item {
+  font-size: 75%;
+}
+
+.logo {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 150%;
+}
+
+.upper-row {
+  box-shadow: 0 2px 2px #000000;
+}
+
+.second-row {
+  height: 75%;
+  box-shadow: 0 2px 2px black;
+}
+
+.mat-menu-item {
+  font-size: 75%;
+}
+
+.menu-icon {
+  margin-top: auto;
+}
+
+::ng-deep .mat-menu-panel {
+  background-color: #445963 !important;
+}
+
+.mat-divider {
+  margin: 0 10px 0 10px;
+  background-color: white;
+}
+
+button {
+  color: whitesmoke;
+}

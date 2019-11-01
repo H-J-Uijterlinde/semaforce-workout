@@ -1,0 +1,76 @@
+<div class="filter-container">
+
+  <h3>Name</h3>
+  <mat-divider class="filter-divider"></mat-divider>
+
+  <mat-form-field>
+    <label id="find-by-name"></label>
+    <input matInput
+           #searchByName
+           name="find-by-name"
+           placeholder="Find by name:"
+           [(ngModel)]="partialName"
+           (input)="search(searchByName.value)">
+
+  </mat-form-field>
+
+  <h3>Category</h3>
+  <mat-divider class="filter-divider"></mat-divider>
+
+  <mat-radio-group
+    aria-labelledby="category-radio-group"
+    class="category-radio"
+    [(ngModel)]="selectedCategory"
+    (change)="findExercises()">
+    <label class="select-category-text">
+      Filter by category:
+    </label>
+    <mat-radio-button class="category-radio-button"
+                      checked
+                      [value]="null">
+      Show All
+    </mat-radio-button>
+    <mat-radio-button
+      class="category-radio-button"
+      *ngFor="let category of categories"
+      [value]="category">
+      {{category.valueOf()}}
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <h3>Muscle Group</h3>
+  <mat-divider class="filter-divider"></mat-divider>
+
+  <mat-radio-group
+    aria-labelledby="muscleGroup-radio-group"
+    class="category-radio"
+    [(ngModel)]="selectedMuscleGroup"
+    (change)="findExercises()">
+    <label class="select-category-text">
+      Filter by muscle-group:
+    </label>
+    <mat-radio-button class="category-radio-button"
+                      checked
+                      [value]="null">
+      Show All
+    </mat-radio-button>
+    <mat-radio-button
+      class="category-radio-button"
+      *ngFor="let muscleGroup of muscleGroups"
+      [value]="muscleGroup">
+      {{muscleGroup.valueOf()}}
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <h3>Target Muscle
+    <button class="select-primary-button"
+            (click)="openDialog()">
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+  </h3>
+  <mat-divider class="filter-divider"></mat-divider>
+
+  <h5 *ngIf="muscles[0]">- {{muscles[0].name}}
+    <button class="remove-muscle-button" (click)="removePrimaryMuscle()">remove</button>
+  </h5>
+</div>
