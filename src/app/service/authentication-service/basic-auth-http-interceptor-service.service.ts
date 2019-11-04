@@ -11,8 +11,11 @@ export class BasicAuthHttpInterceptorServiceService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 
+    console.log('interceptor used');
+
     if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
 
+      console.log('inside interceptor method');
       const tokenStr = sessionStorage.getItem('token');
       req = req.clone({
         setHeaders: {

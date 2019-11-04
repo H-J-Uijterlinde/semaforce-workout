@@ -1,0 +1,81 @@
+.current-workout-summary-container {
+  align-content: center;
+}
+
+.mat-expansion-panel {
+  margin-top: 6px !important;
+  margin-bottom: 3px !important;
+}
+
+.mat-expansion-panel-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.mat-expansion-panel-header-description {
+  text-align: right;
+  display: inline-block;
+}
+
+.mat-expansion-panel-header-title {
+  vertical-align: center;
+}
+
+::ng-deep .mat-expansion-panel-content {
+  padding: 0 !important;
+  overflow-x: auto !important;
+}
+
+button {
+  margin: 10px 0;
+  width: 100%;
+  max-width: 300px;
+}
+
+table {
+  border-spacing: 0;
+}
+
+th, td {
+  padding: 4px;
+  max-width: 75px;
+}
+
+td {
+  border-bottom: 1px solid rgba(165, 194, 205, 0.31);
+  border-right: 1px solid rgba(167, 194, 205, 0.3)
+}
+
+thead {
+  border-bottom: 2px solid #445963;
+}
+
+input {
+  border: none !important;
+  background-color: inherit !important;
+  text-align: center;
+  color: black;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', sans-serif;
+  max-width: 90% !important;
+  max-height: 90% !important;
+}
+
+.last-set {
+  border-bottom: none;
+}
+
+.sticky-set-number {
+  position: sticky;
+  width: 75px;
+  left: 0;
+  top: auto;
+  background-color: white;
+}
+
+.sticky-rest-number {
+  position: sticky;
+  left: 29px;
+  top: auto;
+  background-color: white;
+}

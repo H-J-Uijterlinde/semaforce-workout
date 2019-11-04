@@ -1,5 +1,6 @@
 .upper {
   background-color: rgba(255, 242, 223, 0.31);
+  width: fit-content;
 }
 
 .container {

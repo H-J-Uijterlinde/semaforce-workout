@@ -5,4 +5,12 @@
 
 .upper {
   background-color: rgba(255, 242, 223, 0.31);
+  max-width: 375px;
+}
+
+.mat-spinner {
+  position: absolute;
+  left: 40%;
+  top: 30%;
+
 }

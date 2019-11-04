@@ -33,6 +33,9 @@
       <div class="register">
         Click <a routerLink="/register">here</a> to create an account.
       </div>
+
+      <mat-spinner *ngIf="loginAttempted"
+                   color="accent"></mat-spinner>
     </div>
 
   </div>

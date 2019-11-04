@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../service/authentication-service/authentication.service';
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {AuthenticatedUserService} from "../../service/authentication-service/authenticated-user.service";
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {AuthenticatedUserService} from '../../service/authentication-service/authenticated-user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   username = '';
   password = '';
   invalidLogin = false;
+  loginAttempted = false;
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
+    this.loginAttempted = true;
     this.authenticationService.authenticate(this.username, this.password).subscribe(
       data => {
         this.router.navigate(['']);
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
       error => {
         this.invalidLogin = true;
         this.snackbar.open('Login failed, invalid combination of username and password.', null, { duration: 3000});
+        this.loginAttempted = false;
       }
     );
   }

@@ -17,7 +17,7 @@ import {WorkoutView} from '../../model/workout/WorkoutView';
 export class ShowCurrentWorkoutComponent implements OnInit, OnDestroy {
 
   navigationSubscription;
-  selectedDayNumber: number;
+  @Input() selectedDayNumber: number;
   @Input() workout: WorkoutView;
 
   trainingDay: TrainingDayView;

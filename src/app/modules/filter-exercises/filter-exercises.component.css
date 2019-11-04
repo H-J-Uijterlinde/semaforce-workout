@@ -4,6 +4,8 @@
   border-right: 1px dotted #9965f4;
   padding: 50px 10px 50px 10px;
   margin-right: 10px;
+  overflow-y: scroll;
+  max-height: 90%;
 }
 
 .filter-divider {

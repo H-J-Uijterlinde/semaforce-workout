@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-html, body { height: 100%; }
+html, body { height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 background-color: whitesmoke;
 }
@@ -29,8 +29,7 @@ background-color: whitesmoke;
   border: 1px outset black;
   box-shadow: 3px 3px 3px #1c1a1a;
   border-radius: 5px;
-  min-width: auto;
-  min-height: auto;
+  width: 75%;
   max-height: 600px;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -39,6 +38,10 @@ background-color: whitesmoke;
 
 .bg-gray{
   background-color: rgba(202, 202, 203, 0.54);
+}
+
+.mat-dialog-container {
+  padding: 15px;
 }
 
 

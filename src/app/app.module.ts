@@ -14,6 +14,9 @@ import {BasicAuthHttpInterceptorServiceService} from './service/authentication-s
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {HomeComponent} from './layout/home/home.component';
+import {AuthenticatedUserResolver} from './service/resolvers/AuthenticatedUser.resolver';
+import {MatTabsModule} from "@angular/material/tabs";
+import {ShowWorkoutCondensedModule} from "./modules/show-workout-condensed/show-workout-condensed/show-workout-condensed.module";
 
 @NgModule({
   declarations: [
@@ -32,14 +35,17 @@ import {HomeComponent} from './layout/home/home.component';
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule,
+    ShowWorkoutCondensedModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BasicAuthHttpInterceptorServiceService,
       multi: true
-    }
+    },
+    AuthenticatedUserResolver
   ],
   bootstrap: [AppComponent]
 })

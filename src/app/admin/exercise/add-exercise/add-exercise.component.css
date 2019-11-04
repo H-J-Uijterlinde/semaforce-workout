@@ -1,6 +1,7 @@
 .upper {
   min-width: 400px;
   margin-left: 75px;
+  max-width: 450px;
 }
 
 mat-vertical-stepper {
