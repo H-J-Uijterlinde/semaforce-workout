@@ -53,3 +53,8 @@ mat-icon {
   background-color: inherit;
   border: none;
 }
+
+.remove-filters {
+  right: 0;
+  text-align: right;
+}

@@ -16,7 +16,8 @@ import {MaterialModule} from './material.module';
 import {HomeComponent} from './layout/home/home.component';
 import {AuthenticatedUserResolver} from './service/resolvers/AuthenticatedUser.resolver';
 import {MatTabsModule} from "@angular/material/tabs";
-import {ShowWorkoutCondensedModule} from "./modules/show-workout-condensed/show-workout-condensed/show-workout-condensed.module";
+import {ShowWorkoutCondensedModule} from "./modules/show-workout-condensed/show-workout-condensed.module";
+import {AllTrainingdaysResolverService} from "./service/resolvers/all-trainingdays-resolver.service";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {ShowWorkoutCondensedModule} from "./modules/show-workout-condensed/show-
       useClass: BasicAuthHttpInterceptorServiceService,
       multi: true
     },
-    AuthenticatedUserResolver
+    AuthenticatedUserResolver,
+    AllTrainingdaysResolverService
   ],
   bootstrap: [AppComponent]
 })

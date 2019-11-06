@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../service/authentication-service/authentication.service';
+import {DisplaySpinnerService} from '../../service/navigation/display-spinner.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import {AuthenticationService} from '../../service/authentication-service/authen
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authenticationService: AuthenticationService) { }
+  constructor(public authenticationService: AuthenticationService,
+              private displaySpinnerService: DisplaySpinnerService) { }
 
   ngOnInit() {
   }

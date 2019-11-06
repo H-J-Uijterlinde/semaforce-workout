@@ -135,7 +135,7 @@ export class CreateWorkoutComponent implements OnInit {
         response => {
           this.authenticatedUser.setUser();
           this.snackbar.open('Workout created successfully!', null, {duration: 3000});
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/workouts/home');
         }
       );
     } else {

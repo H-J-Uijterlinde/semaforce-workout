@@ -6,21 +6,24 @@ import {ExerciseCategory} from '../../model/exercise/Category';
 import {Observable} from 'rxjs';
 import {MuscleView} from '../../model/muscle/MuscleView';
 import {MuscleGroup} from "../../model/muscle/MuscleGroup";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExerciseService {
 
+  url = environment.baseUrl;
+
   constructor(private httpClient: HttpClient) {
   }
 
   getExerciseById(id: bigint) {
-    return this.httpClient.get<Exercise>('http://77.163.10.148:8090/api/exercises/' + id);
+    return this.httpClient.get<Exercise>(this.url + '/api/exercises/' + id);
   }
 
   getExerciseViews() {
-    return this.httpClient.get<ExerciseView[]>('http://77.163.10.148:8090/api/exercises/view');
+    return this.httpClient.get<ExerciseView[]>(this.url + '/api/exercises/view');
   }
 
   getExerciseViewsByCriteria(partOfName: string, category: ExerciseCategory, muscleGroup: MuscleGroup,
@@ -38,11 +41,11 @@ export class ExerciseService {
       muscleIdString = muscle.id.toString();
     }
 
-    return this.httpClient.get<ExerciseView[]>(`http://77.163.10.148:8090/api/exercises/view/nameContains=${partOfName}` +
+    return this.httpClient.get<ExerciseView[]>(this.url + `/api/exercises/view/nameContains=${partOfName}` +
       `/category=${categoryString}/muscleGroup=${muscleGroupString}/muscleId=${muscleIdString}`);
   }
 
   createExercise(exercise: Exercise) {
-    return this.httpClient.post<Exercise>('http://77.163.10.148:8090/api/exercises', exercise);
+    return this.httpClient.post<Exercise>(this.url + '/api/exercises', exercise);
   }
 }

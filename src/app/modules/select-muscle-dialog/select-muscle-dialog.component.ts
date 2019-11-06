@@ -6,6 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 export interface MuscleData {
   selectedMuscles: MuscleView[];
   primaryMuscle: boolean;
+  allMuscles: MuscleView[];
 }
 
 @Component({
@@ -22,9 +23,7 @@ export class SelectMuscleDialogComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: MuscleData) { }
 
   ngOnInit() {
-    this.muscleService.getMuscleViews().subscribe(
-      response => this.muscles = response
-    );
+    this.muscles = this.data.allMuscles;
   }
 
   select() {

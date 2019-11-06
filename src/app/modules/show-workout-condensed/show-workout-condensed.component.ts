@@ -1,24 +1,26 @@
 import {Component, OnInit} from '@angular/core';
-import {TrainingDayView} from '../../../model/workout/TrainingDayView';
-import {WorkoutView} from '../../../model/workout/WorkoutView';
-import {AuthenticatedUserService} from '../../../service/authentication-service/authenticated-user.service';
-import {WorkoutService} from '../../../service/workout/workout.service';
-import {ScheduledExercise} from '../../../model/workout/ScheduledExercise';
-import {WeeklyResult} from '../../../model/workout/WeeklyResult';
+import {TrainingDayView} from '../../model/workout/TrainingDayView';
+import {WorkoutView} from '../../model/workout/WorkoutView';
+import {AuthenticatedUserService} from '../../service/authentication-service/authenticated-user.service';
+import {WorkoutService} from '../../service/workout/workout.service';
+import {ScheduledExercise} from '../../model/workout/ScheduledExercise';
+import {WeeklyResult} from '../../model/workout/WeeklyResult';
 import {NgForm} from '@angular/forms';
-import {AddResultService} from '../../../service/results/add-result.service';
+import {AddResultService} from '../../service/results/add-result.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-show-workout-condensed',
   templateUrl: './show-workout-condensed.component.html',
-styleUrls: ['./show-workout-condensed.component.css']
+  styleUrls: ['./show-workout-condensed.component.css']
 })
 export class ShowWorkoutCondensedComponent implements OnInit {
 
   currentWorkout: WorkoutView;
   dayNumbers: number[] = [];
   weekNumbers: number[] = [];
+  allTrainingDays: TrainingDayView[];
   trainingDay: TrainingDayView;
   currentWeek: number;
   exercises: ScheduledExercise[] = [];
@@ -35,8 +37,17 @@ export class ShowWorkoutCondensedComponent implements OnInit {
     if (this.currentWorkout) {
       this.populateNumberArray(this.currentWorkout.daysPerWeek, this.dayNumbers);
       this.populateNumberArray(this.currentWorkout.numWeeks, this.weekNumbers);
-      this.setTrainingDay(1);
+      this.getTrainingDays();
     }
+  }
+
+  private getTrainingDays() {
+    this.workoutService.getAllTrainingDaysByWorkoutId(this.currentWorkout.id).subscribe(
+      response => {
+        this.allTrainingDays = response;
+        this.setTrainingDay(1);
+      }
+    );
   }
 
   populateNumberArray(maxNumber: number, numberArrayToPopulate: number[]) {
@@ -46,15 +57,11 @@ export class ShowWorkoutCondensedComponent implements OnInit {
   }
 
   setTrainingDay(dayNumber: number) {
-    this.workoutService.getTrainingDayByWorkoutId(this.currentWorkout.id, dayNumber).subscribe(
-      response => {
-        this.handleTrainingDayResponse(response);
-      }
-    );
+    this.handleTrainingDayResponse(this.allTrainingDays[dayNumber - 1]);
   }
 
-  private handleTrainingDayResponse(response) {
-    this.trainingDay = response;
+  private handleTrainingDayResponse(trainingDay: TrainingDayView) {
+    this.trainingDay = trainingDay;
     this.currentWeek = this.trainingDay.currentWeek;
     this.exercises = Object.values(this.trainingDay.scheduledExercises);
     this.exercises.forEach((exercise, index) => {

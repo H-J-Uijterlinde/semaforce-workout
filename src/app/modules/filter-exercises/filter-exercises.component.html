@@ -1,4 +1,12 @@
 <div class="filter-container">
+  <button
+    *ngIf="partialName !== '' ||
+            selectedMuscleGroup !== null ||
+            selectedMuscle !== null ||
+            selectedCategory !== null"
+    class="remove-muscle-button remove-filters"
+  (click)="removeFilters()">Clear Selection
+  </button>
 
   <h3>Name</h3>
   <mat-divider class="filter-divider"></mat-divider>

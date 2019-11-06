@@ -7,8 +7,9 @@ import {ExerciseCategory} from '../../../model/exercise/Category';
 import {MuscleView} from '../../../model/muscle/MuscleView';
 import {MatDialog} from '@angular/material/dialog';
 import {SelectMuscleDialogComponent} from '../../../modules/select-muscle-dialog/select-muscle-dialog.component';
-import {NgForm} from "@angular/forms";
-import {MuscleGroup} from "../../../model/muscle/MuscleGroup";
+import {NgForm} from '@angular/forms';
+import {MuscleGroup} from '../../../model/muscle/MuscleGroup';
+import {MuscleService} from '../../../service/muscle/muscle.service';
 
 export interface MuscleData {
   selectedMuscles: MuscleView[];
@@ -24,8 +25,10 @@ export class AddExerciseComponent implements OnInit {
   categories: ExerciseCategory[] = [ExerciseCategory.Main, ExerciseCategory.Assistance, ExerciseCategory.Accessory];
   muscleGroups: MuscleGroup[] = [MuscleGroup.Legs, MuscleGroup.Arms, MuscleGroup.Chest, MuscleGroup.Back, MuscleGroup.Shoulders];
   exercise: Exercise = new Exercise('', [], null, null);
+  allMuscles: MuscleView[];
 
   constructor(private exerciseService: ExerciseService,
+              private muscleService: MuscleService,
               private router: Router,
               private snackBar: MatSnackBar,
               public dialog: MatDialog,
@@ -40,6 +43,9 @@ export class AddExerciseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.muscleService.getMuscleViews().subscribe(
+      data => this.allMuscles = data
+    );
   }
 
 
@@ -48,7 +54,8 @@ export class AddExerciseComponent implements OnInit {
     const dialogRef = this.dialog.open(SelectMuscleDialogComponent, {
       data: {
         selectedMuscles: this.exercise.musclesTrained,
-        primaryMuscle: false
+        primaryMuscle: false,
+        allMuscles: this.allMuscles
       }
     });
 

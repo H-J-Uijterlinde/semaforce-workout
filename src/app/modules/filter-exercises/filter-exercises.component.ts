@@ -8,6 +8,7 @@ import {ExerciseService} from '../../service/exercise/exercise.service';
 import {SelectMuscleDialogComponent} from '../select-muscle-dialog/select-muscle-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {MuscleGroup} from '../../model/muscle/MuscleGroup';
+import {MuscleService} from "../../service/muscle/muscle.service";
 
 @Component({
   selector: 'app-filter-exercises',
@@ -20,6 +21,7 @@ export class FilterExercisesComponent implements OnInit {
   exercises: ExerciseView[];
   categories: ExerciseCategory[] = [ExerciseCategory.Main, ExerciseCategory.Assistance, ExerciseCategory.Accessory];
   muscleGroups: MuscleGroup[] = [MuscleGroup.Legs, MuscleGroup.Arms, MuscleGroup.Chest, MuscleGroup.Back, MuscleGroup.Shoulders];
+  allMuscles: MuscleView[];
 
   // Properties needed to keep track of the users choices.
   selectedMuscleGroup: MuscleGroup = null;
@@ -30,6 +32,7 @@ export class FilterExercisesComponent implements OnInit {
   @Output() exercisesEvent = new EventEmitter<ExerciseView[]>();
 
   constructor(private exerciseService: ExerciseService,
+              private muscleService: MuscleService,
               public dialog: MatDialog) {
   }
 
@@ -37,6 +40,9 @@ export class FilterExercisesComponent implements OnInit {
     this.setExercises();
 
     this.SubscribeToInputChanges();
+    this.muscleService.getMuscleViews().subscribe(
+      data => this.allMuscles = data
+    );
   }
 
   /*
@@ -69,7 +75,8 @@ export class FilterExercisesComponent implements OnInit {
     const dialogRef = this.dialog.open(SelectMuscleDialogComponent, {
       data: {
         selectedMuscles: this.muscles,
-        primaryMuscle: true
+        primaryMuscle: true,
+        allMuscles: this.allMuscles
       }
     });
 
@@ -112,5 +119,14 @@ export class FilterExercisesComponent implements OnInit {
 
   search(term: string): void {
     this.searchTerms.next(term);
+  }
+
+  removeFilters() {
+    this.selectedCategory = null;
+    this.muscles = [];
+    this.selectedMuscle = null;
+    this.selectedMuscleGroup = null;
+    this.partialName = '';
+    this.setExercises();
   }
 }

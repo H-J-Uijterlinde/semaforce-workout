@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {environment} from '../../../environments/environment';
 
 export class Login {
   constructor(
@@ -23,12 +24,14 @@ export class JwtResponse {
 })
 export class AuthenticationService {
 
+  url = environment.baseUrl;
+
   constructor(private httpClient: HttpClient) {
   }
 
   authenticate(username, password) {
     return this.httpClient.
-    post<any>('http://77.163.10.148:8090/api/authenticate', {username, password}).
+    post<any>(this.url + '/api/authenticate', {username, password}).
     pipe(
       map(
         userData => {

@@ -4,13 +4,17 @@ import {AddUserComponent} from './authentication/add-user/add-user.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {LogoutComponent} from './authentication/logout/logout.component';
 import {AuthGuardService} from './service/authentication-service/auth-guard.service';
-import {HomeComponent} from './layout/home/home.component';
 import {AuthenticatedUserResolver} from './service/resolvers/AuthenticatedUser.resolver';
+import {HomeComponent} from './layout/home/home.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuardService]},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuardService], resolve: {home: AuthenticatedUserResolver}},
+  {
+    path: 'home', component: HomeComponent, canActivate: [AuthGuardService], resolve: {
+      user: AuthenticatedUserResolver
+    }
+  },
   {path: 'register', component: AddUserComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService]},
