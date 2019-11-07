@@ -10,6 +10,8 @@ import {ExerciseConfiguration} from '../../model/workout/ExerciseConfiguration';
 import {MatDialog} from '@angular/material/dialog';
 import {SelectExerciseDialogComponent} from './select-exercise-dialog/select-exercise-dialog.component';
 import {Router} from '@angular/router';
+import {MatStepper} from '@angular/material/stepper';
+import {DisplaySpinnerService} from "../../service/navigation/display-spinner.service";
 
 @Component({
   selector: 'app-create-workout',
@@ -31,7 +33,8 @@ export class CreateWorkoutComponent implements OnInit {
               private workoutService: WorkoutService,
               private snackbar: MatSnackBar,
               public dialog: MatDialog,
-              private router: Router) {
+              private router: Router,
+              private spinnerService: DisplaySpinnerService) {
   }
 
   ngOnInit() {
@@ -131,11 +134,16 @@ export class CreateWorkoutComponent implements OnInit {
 
   saveWorkout(form: NgForm) {
     if (this.checkValidity(form)) {
+      this.spinnerService.displaySpinner = true;
       this.workoutService.saveWorkout(this.workout).subscribe(
         response => {
           this.authenticatedUser.setUser();
           this.snackbar.open('Workout created successfully!', null, {duration: 3000});
           this.router.navigateByUrl('/workouts/home');
+        },
+        error => {
+          this.snackbar.open('Error creating workout, please try again', null, {duration: 3000});
+          this.spinnerService.displaySpinner = false;
         }
       );
     } else {
@@ -165,5 +173,16 @@ export class CreateWorkoutComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  reset(stepper: MatStepper, form: NgForm) {
+    this.workout.numWeeks = null;
+    this.workout.daysPerWeek = null;
+    this.workout.referenceName = '';
+    this.workout.trainingDays = [];
+    this.populateExerciseNumbersPerDay();
+    this.configurationDisabled = false;
+    stepper.reset();
+    form.resetForm();
   }
 }

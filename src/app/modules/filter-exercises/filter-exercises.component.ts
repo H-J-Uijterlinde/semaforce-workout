@@ -82,9 +82,11 @@ export class FilterExercisesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       result => {
-        this.muscles = result;
-        this.selectedMuscle = this.muscles[0];
-        this.setExercises();
+        if (result) {
+          this.muscles = result;
+          this.selectedMuscle = this.muscles[0];
+          this.setExercises();
+        }
       }
     );
   }

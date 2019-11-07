@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AccountRegistrationFormGroup} from '../../forms/account-registration/AccountRegistrationFormGroup';
 import {FormGroup} from '@angular/forms';
+import {DisplaySpinnerService} from "../../service/navigation/display-spinner.service";
 
 @Component({
   selector: 'app-add-user',
@@ -22,7 +23,8 @@ export class AddUserComponent implements OnInit {
 
   constructor(private httpClientService: HttpClientService,
               private router: Router,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private spinnerService: DisplaySpinnerService) {
   }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class AddUserComponent implements OnInit {
   createUser(form: FormGroup): void {
 
     this.submitAttempted = true;
+    this.spinnerService.displaySpinner = true;
 
     if (form.valid) {
       this.httpClientService.postUser(this.user).subscribe(
@@ -39,6 +42,12 @@ export class AddUserComponent implements OnInit {
           this.snackBar.open('Account created successfully', null, {
             duration: 3000
           });
+        },
+        error => {
+          this.snackBar.open('Could not create account, please try again', null, {
+            duration: 3000
+          });
+          this.spinnerService.displaySpinner = false;
         }
       );
     }

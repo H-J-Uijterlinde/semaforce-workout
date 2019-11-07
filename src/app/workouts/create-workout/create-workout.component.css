@@ -140,3 +140,9 @@ p {
 .invisible {
   visibility: hidden;
 }
+
+.reset-button {
+  text-align: right;
+  text-transform: none;
+  margin: 0;
+}

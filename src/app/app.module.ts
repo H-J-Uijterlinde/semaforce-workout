@@ -18,6 +18,7 @@ import {AuthenticatedUserResolver} from './service/resolvers/AuthenticatedUser.r
 import {MatTabsModule} from "@angular/material/tabs";
 import {ShowWorkoutCondensedModule} from "./modules/show-workout-condensed/show-workout-condensed.module";
 import {AllTrainingdaysResolverService} from "./service/resolvers/all-trainingdays-resolver.service";
+import {DeviceDetectorModule} from "ngx-device-detector";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {AllTrainingdaysResolverService} from "./service/resolvers/all-trainingda
     AppRoutingModule,
     ReactiveFormsModule,
     MatTabsModule,
-    ShowWorkoutCondensedModule
+    ShowWorkoutCondensedModule,
+    DeviceDetectorModule.forRoot()
   ],
   providers: [
     {

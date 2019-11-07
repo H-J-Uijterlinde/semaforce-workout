@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticatedUserService} from '../../service/authentication-service/authenticated-user.service';
 import {WorkoutView} from '../../model/workout/WorkoutView';
+import {DeviceDetectorService} from "ngx-device-detector";
 
 @Component({
   selector: 'app-workout-menu',
@@ -13,7 +14,8 @@ export class WorkoutMenuComponent implements OnInit {
 
   dayNumber: number[] = [];
 
-  constructor(private authenticatedUserService: AuthenticatedUserService) {
+  constructor(private authenticatedUserService: AuthenticatedUserService,
+              public deviceDetector: DeviceDetectorService) {
   }
 
   populateDayNumber() {

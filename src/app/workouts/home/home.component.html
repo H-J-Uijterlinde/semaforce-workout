@@ -4,6 +4,9 @@
     <p>Welcome to the workout center. Here you can check your current workout,
       create new workouts, or browse through your previous workouts. Select an option from the
       menu to begin!</p>
+    <h4 *ngIf="deviceDetector.isMobile() || deviceDetector.isTablet()">
+      The workout section is only available on a desktop, browse to this page on a computer or laptop to continue.
+    </h4>
   </div>
 </div>
 

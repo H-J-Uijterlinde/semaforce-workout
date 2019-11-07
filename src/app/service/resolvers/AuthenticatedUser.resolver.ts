@@ -13,8 +13,6 @@ export class AuthenticatedUserResolver {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<UserView> {
-    console.log('user resolver called');
-
     return this.authenticatedUser.user === null || this.authenticatedUser.user === undefined ?
       this.http.getUserViewByUsername(sessionStorage.getItem('username')) : null;
   }

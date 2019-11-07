@@ -10,7 +10,7 @@ import {DisplaySpinnerService} from '../../service/navigation/display-spinner.se
 export class HeaderComponent implements OnInit {
 
   constructor(public authenticationService: AuthenticationService,
-              private displaySpinnerService: DisplaySpinnerService) { }
+              public displaySpinnerService: DisplaySpinnerService) { }
 
   ngOnInit() {
   }
