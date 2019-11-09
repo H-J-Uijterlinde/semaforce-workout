@@ -65,3 +65,7 @@ mat-expansion-panel-header {
   font-size: 16px;
 }
 
+::ng-deep.mat-expansion-panel-content {
+  background-color: inherit;
+}
+

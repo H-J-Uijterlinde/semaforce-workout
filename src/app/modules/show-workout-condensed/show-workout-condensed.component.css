@@ -5,6 +5,7 @@
 .mat-expansion-panel {
   margin-top: 6px !important;
   margin-bottom: 3px !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .mat-expansion-panel-header {
@@ -19,12 +20,21 @@
 
 .mat-expansion-panel-header-title {
   vertical-align: center;
+  color: black;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
 }
 
 ::ng-deep .mat-expansion-panel-content {
   padding: 0 !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+
+}
+
+::ng-deep.mat-expansion-panel-body {
 }
 
 button {
@@ -63,6 +73,17 @@ input {
   max-height: 90% !important;
 }
 
+::ng-deep.mat-tab-labels {
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+::ng-deep.mat-tab-label {
+  font-size: 16px;
+  font-weight: bolder;
+  color: black;
+  letter-spacing: 0.15em;
+}
+
 .last-set {
   border-bottom: none;
 }
@@ -72,16 +93,23 @@ input {
   width: 75px;
   left: 0;
   top: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1) !important;
 }
 
 .sticky-rest-number {
   position: sticky;
   left: 60px;
   top: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1) !important;
 }
 
 .coming-week {
   display: none;
+}
+
+button {
+  background-color: #1b3039;
+  font-size: 16px;
+  letter-spacing: 0.15em;
+
 }

@@ -1,9 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-html, body { height: 100%;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-background-color: whitesmoke;
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: whitesmoke;
+  background-image: url("~assets/login-back.jpg") !important;
+
 }
 
 /*the .container and .upper are two div classes, which when used together,
@@ -33,11 +40,11 @@ background-color: whitesmoke;
   max-height: 600px;
   margin-top: 15px;
   margin-bottom: 15px;
-  background-color: rgba(255, 242, 223, 0.31);
+  background-color: rgba(255, 242, 223, 0.9);
 }
 
-.bg-gray{
-  background-color: rgba(202, 202, 203, 0.54);
+.bg-gray {
+  background-color: rgba(191, 180, 167, 0.76);
 }
 
 .mat-dialog-container {

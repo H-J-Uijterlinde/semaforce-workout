@@ -8,7 +8,6 @@ import {WeeklyResult} from '../../model/workout/WeeklyResult';
 import {NgForm} from '@angular/forms';
 import {AddResultService} from '../../service/results/add-result.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-show-workout-condensed',
