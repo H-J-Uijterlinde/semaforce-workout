@@ -1,0 +1,21 @@
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+label {
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.select-exercise {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin: 5px 5px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}

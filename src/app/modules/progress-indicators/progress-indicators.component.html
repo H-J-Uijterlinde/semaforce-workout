@@ -1,0 +1,7 @@
+<mat-card *ngFor="let goal of goals | async">
+  <mat-card-title>{{goal.title}}</mat-card-title>
+  <mat-card-subtitle>{{goal.subTitle}}</mat-card-subtitle>
+  <mat-card-content>
+    <mat-progress-bar mode="determinate" [value]="goal.completionPercentage"></mat-progress-bar>
+  </mat-card-content>
+</mat-card>

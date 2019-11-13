@@ -1,0 +1,16 @@
+mat-card {
+  margin: 15px auto;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+::ng-deep.mat-progress-bar-buffer {
+  background-color: #cfd8dc;
+}
+
+::ng-deep.mat-progress-bar{
+  background-color: #1c313a;
+  height: 7px !important;
+}

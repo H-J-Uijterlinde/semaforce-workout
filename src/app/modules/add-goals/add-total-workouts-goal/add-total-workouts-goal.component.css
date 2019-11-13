@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+label {
+  margin-top: 25px;
+  font-weight: bold;
+}

@@ -1,0 +1,21 @@
+.add-goal-container {
+  margin: 15px auto;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  background-color: rgba(245, 245, 245, 0.9);
+  box-shadow: 2px 2px 15px black;
+}
+
+.add-goals-image {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.hold-form-container {
+  padding: 15px 40px;
+}
+
+::ng-deep.mat-form-field-infix{
+  width: 280px !important;
+}

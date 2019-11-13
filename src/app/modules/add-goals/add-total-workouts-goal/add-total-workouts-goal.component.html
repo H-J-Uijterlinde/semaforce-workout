@@ -1,0 +1,28 @@
+<form novalidate #totalWorkoutsForm="ngForm" class="set-total-workouts-form">
+
+  <label>For how many weeks do you want to set this goal?</label>
+  <mat-form-field>
+    <input matInput
+           type="number"
+           placeholder="Number of weeks"
+           required
+           name="numWeeks"
+           [(ngModel)]="selectedNumWeeks">
+
+  </mat-form-field>
+
+  <label>How many days per week are you going to train?</label>
+  <mat-form-field>
+    <mat-select [(value)]="selectedDaysPerWeek" required>
+      <mat-option *ngFor="let days of daysPerWeek" [value]="days">
+        {{days}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button
+          color="primary"
+          (click)="saveGoal(totalWorkoutsForm)">
+    Set Goal
+  </button>
+</form>

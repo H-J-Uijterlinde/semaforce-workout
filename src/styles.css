@@ -8,6 +8,7 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
   background-color: whitesmoke;
   background-image: url("~assets/login-back.jpg") !important;
 
@@ -40,11 +41,11 @@ body {
   max-height: 600px;
   margin-top: 15px;
   margin-bottom: 15px;
-  background-color: rgba(255, 242, 223, 0.9);
+  background-color: rgba(245, 245, 245, 0.9);
 }
 
 .bg-gray {
-  background-color: rgba(191, 180, 167, 0.76);
+  background-color: rgba(231, 225, 240, 0.76);
 }
 
 .mat-dialog-container {

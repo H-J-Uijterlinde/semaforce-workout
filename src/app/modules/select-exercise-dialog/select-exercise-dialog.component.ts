@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {ExerciseView} from '../../../model/exercise/ExerciseView';
+import {ExerciseView} from '../../model/exercise/ExerciseView';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 export interface ExerciseData {

@@ -1,0 +1,23 @@
+<div class="add-goal-container">
+  <img src="../../../assets/add-goals-pic.jpg"
+       class="add-goals-image"
+       alt="Weight plates">
+
+  <div class="hold-form-container">
+    <mat-form-field>
+      <mat-label>Choose what kind of goal you want to set:</mat-label>
+      <mat-select [(value)]="selectedOption">
+        <mat-option value="1">Total Workouts</mat-option>
+        <mat-option value="2">Exercise Goal</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <app-add-total-workouts-goal *ngIf="selectedOption == 1"></app-add-total-workouts-goal>
+    <app-add-exercise-goal *ngIf="selectedOption == 2"></app-add-exercise-goal>
+  </div>
+
+</div>
+
+
+
+

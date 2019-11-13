@@ -8,7 +8,7 @@ import {TrainingDay} from '../../model/workout/TrainingDay';
 import {ScheduledExercise} from '../../model/workout/ScheduledExercise';
 import {ExerciseConfiguration} from '../../model/workout/ExerciseConfiguration';
 import {MatDialog} from '@angular/material/dialog';
-import {SelectExerciseDialogComponent} from './select-exercise-dialog/select-exercise-dialog.component';
+import {SelectExerciseDialogComponent} from '../../modules/select-exercise-dialog/select-exercise-dialog.component';
 import {Router} from '@angular/router';
 import {MatStepper} from '@angular/material/stepper';
 import {DisplaySpinnerService} from "../../service/navigation/display-spinner.service";

@@ -1,0 +1,12 @@
+mat-card {
+  margin: 15px auto;
+  width: 90%;
+  max-width: 650px;
+  text-align: center;
+  background-color: rgba(255, 242, 223, 0.95);
+}
+
+button {
+  text-transform: capitalize;
+  font-size: 16px;
+}

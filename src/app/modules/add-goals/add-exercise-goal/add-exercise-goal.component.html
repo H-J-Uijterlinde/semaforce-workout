@@ -1,0 +1,48 @@
+
+<div class="select-exercise">
+  <label>For what exercise do you want to set this goal?</label>
+  <button mat-stroked-button (click)="openExerciseDialog()">
+    {{selectedExercise?.name || 'Select Exercise'}}
+  </button>
+</div>
+
+
+  <form novalidate #exerciseGoal="ngForm" class="exercise-goals-containers" *ngIf="selectedExercise">
+    <label>Set the number of sets and repetitions and the weight you are aiming for:</label>
+    <mat-form-field>
+      <input matInput
+             type="number"
+             placeholder="Number of sets"
+             required
+             name="numSets"
+             [(ngModel)]="goal.desiredSets">
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="number"
+             placeholder="Number of reps"
+             required
+             name="numReps"
+             [(ngModel)]="goal.desiredReps">
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="number"
+             placeholder="Weight"
+             required
+             name="weight"
+             [(ngModel)]="goal.desiredWeight">
+
+    </mat-form-field>
+
+    <button mat-raised-button
+            color="primary"
+            (click)="saveGoal(exerciseGoal)">
+      Set Goal
+    </button>
+
+</form>
