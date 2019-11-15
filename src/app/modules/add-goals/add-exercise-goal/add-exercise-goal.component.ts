@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GoalsService} from '../../../service/goals/goals.service';
 import {AuthenticatedUserService} from '../../../service/authentication-service/authenticated-user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -7,7 +7,9 @@ import {ExerciseGoals} from '../../../model/goals/ExerciseGoals';
 import {ExerciseView} from '../../../model/exercise/ExerciseView';
 import {SelectExerciseDialogComponent} from '../../select-exercise-dialog/select-exercise-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
-import {NgForm} from "@angular/forms";
+import {NgForm} from '@angular/forms';
+import {DisplaySpinnerService} from '../../../service/navigation/display-spinner.service';
+import {ExerciseGoalConfirmationDialogComponent} from '../exercise-goal-confirmation-dialog/exercise-goal-confirmation-dialog.component';
 
 @Component({
   selector: 'app-add-exercise-goal',
@@ -16,14 +18,16 @@ import {NgForm} from "@angular/forms";
 })
 export class AddExerciseGoalComponent implements OnInit {
 
-  goal: ExerciseGoals = new ExerciseGoals(null, null, null, null, null);
+  goal: ExerciseGoals = new ExerciseGoals(null, null, null, null, null, null, 0);
   selectedExercise: ExerciseView;
 
   constructor(private goalsService: GoalsService,
               private authenticatedUser: AuthenticatedUserService,
               private snackBar: MatSnackBar,
               private router: Router,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private spinner: DisplaySpinnerService) {
+  }
 
   ngOnInit() {
   }
@@ -46,16 +50,27 @@ export class AddExerciseGoalComponent implements OnInit {
     );
   }
 
+  openDialog(goal: ExerciseGoals) {
+    goal.user = this.authenticatedUser.user;
+    goal.exercise = this.selectedExercise;
+
+    this.dialog.open(ExerciseGoalConfirmationDialogComponent, {
+      data: {
+        exerciseGoal: goal
+      },
+      disableClose: true
+    });
+  }
+
   saveGoal(form: NgForm) {
     if (form.valid) {
+      this.spinner.displaySpinner = true;
       this.goal.user = this.authenticatedUser.user;
       this.goal.exercise = this.selectedExercise;
       this.goalsService.postExerciseGoal(this.goal).subscribe(
         success => {
-          this.snackBar.open('Goal saved successfully!', null, {
-            duration: 3000
-          });
-          this.router.navigateByUrl('/results');
+          this.openDialog(success as ExerciseGoals);
+          this.spinner.displaySpinner = false;
         }
       );
     }

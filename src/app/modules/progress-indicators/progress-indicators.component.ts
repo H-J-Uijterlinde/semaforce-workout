@@ -20,4 +20,7 @@ export class ProgressIndicatorsComponent implements OnInit {
     this.goals = this.goalsService.getGoalViewsByUserId(this.authenticatedUser.user.id);
   }
 
+  removeGoal(id: bigint) {
+    this.goalsService.removeGoal(id).subscribe();
+  }
 }

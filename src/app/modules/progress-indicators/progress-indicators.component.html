@@ -4,4 +4,7 @@
   <mat-card-content>
     <mat-progress-bar mode="determinate" [value]="goal.completionPercentage"></mat-progress-bar>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="removeGoal(goal.id)">Remove Goal</button>
+  </mat-card-actions>
 </mat-card>
