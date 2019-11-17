@@ -4,5 +4,7 @@
   overflow-x: hidden;
   text-align: center;
   padding: 5px;
+  max-width: 750px;
+  margin: 15px auto;
 }
 

@@ -1,63 +1,83 @@
 <h2 mat-dialog-title>The starting point</h2>
+<div class="exercise-goal-confirmation-container">
+  <div *ngIf="invalidGoal">
+    Your results show that you can already do this!
 
-<div *ngIf="invalidGoal">
-  Your results show that you can already do this!
-
-  <h4>Aim higher!</h4>
-
-  <mat-dialog-actions align="end">
-    <button
-      (click)="closeDialogInvalidGoal()"
-      mat-button mat-dialog-close>OK</button>
-  </mat-dialog-actions>
-</div>
-
-<div
-  *ngIf="startingVolumeAvailable">
-  <p>We were able to estimate the starting point for your goal, based on recent results!</p>
-  <p>
-    Total starting volume: {{goal.startingVolume}}<br>
-    This equals: {{goal.desiredSets}} x {{goal.desiredReps}} with
-    {{goal.startingVolume / (goal.desiredReps * goal.desiredSets) | number:"1.2-2"}}<br>
-    or: {{goal.desiredSets}} x {{goal.startingVolume / goal.desiredWeight / goal.desiredSets | number: "1.2-2"}} with
-    {{goal.desiredWeight}}
-  </p>
-  <mat-dialog-actions align="end">
-    <button
-      (click)="closeDialog()"
-      mat-button mat-dialog-close>OK</button>
-  </mat-dialog-actions>
-</div>
-
-<div *ngIf="!startingVolumeAvailable && !invalidGoal">
-  <p>
-    We were unable to estimate a reliable starting point from recent results. This is most likely because
-    you have not saved any results for this exercise where the combination of weights, reps and sets were
-    comparable to those you set for this goal.
-  </p>
-  <p>
-    Estimate the maximum weight you would be able to lift for {{goal.desiredSets}} sets times {{goal.desiredReps}}
-    repetitions:
-  </p>
-
-  <form #form="ngForm" novalidate>
-    <mat-form-field>
-      <input matInput
-             placeholder="Enter weight"
-             type="number"
-             name="estimated-weight-input"
-             [(ngModel)]="estimatedWeight"
-             required>
-    </mat-form-field>
+    <h4>Aim higher!</h4>
 
     <mat-dialog-actions align="end">
-      <button mat-button
-              (click)="saveStartingVolume(form)"
-              [disabled]="!form.valid">Save
+      <button
+        (click)="closeDialogInvalidGoal()"
+        mat-button mat-dialog-close>OK
       </button>
     </mat-dialog-actions>
-  </form>
+  </div>
+
+  <div
+    *ngIf="startingVolumeAvailable">
+    <p>We were able to estimate the starting point for your goal, based on recent results!</p>
+    <p>
+      Total starting volume: {{goal.startingVolume}} kg<br>
+      This equals: {{goal.desiredSets}} sets x {{goal.desiredReps}} reps with
+      {{goal.startingVolume / (goal.desiredReps * goal.desiredSets) | number:"1.2-2"}} kg<br>
+      or: {{goal.desiredSets}} sets x {{goal.startingVolume / goal.desiredWeight / goal.desiredSets | number: "1.2-2"}} reps with
+      {{goal.desiredWeight}} kg
+    </p>
+    <mat-dialog-actions align="end">
+      <button
+        (click)="closeDialog()"
+        mat-button mat-dialog-close>OK
+      </button>
+    </mat-dialog-actions>
+  </div>
+
+  <div *ngIf="!startingVolumeAvailable && !invalidGoal">
+    <p>
+      We were unable to estimate a reliable starting point from recent results. This is most likely because
+      you have not saved any results for this exercise where the combination of weights, reps and sets were
+      comparable to those you set for this goal.
+    </p>
+    <hr>
+    <p>
+      You can choose to estimate your starting point, by sliding the button below. Or click OK to let us calculate your starting point from future
+      results from your upcoming workouts.
+    </p>
+    <mat-slide-toggle color="primary" [(ngModel)]="estimateStartingPoint">
+      Slide to give your own estimation
+    </mat-slide-toggle>
+    <mat-dialog-actions align="end" *ngIf="!estimateStartingPoint">
+      <button mat-button mat-dialog-close
+              (click)="closeDialog()">OK
+      </button>
+    </mat-dialog-actions>
+
+    <div *ngIf="estimateStartingPoint">
+      <p>
+        Estimate the maximum weight you would be able to lift for {{goal.desiredSets}} sets times {{goal.desiredReps}}
+        repetitions:
+      </p>
+
+      <form #form="ngForm" novalidate>
+        <mat-form-field>
+          <input matInput
+                 placeholder="Enter weight"
+                 type="number"
+                 name="estimated-weight-input"
+                 [(ngModel)]="estimatedWeight"
+                 required>
+        </mat-form-field>
+
+        <mat-dialog-actions align="end">
+          <button mat-button
+                  (click)="saveStartingVolume(form)"
+                  [disabled]="!form.valid">Save
+          </button>
+        </mat-dialog-actions>
+      </form>
+    </div>
+
+
+  </div>
 
 </div>
-
 

@@ -51,6 +51,8 @@ body {
 .mat-dialog-container {
   padding: 15px;
   text-align: center;
+  max-height: 90%;
+  overflow-y: auto;
 }
 
 

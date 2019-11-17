@@ -21,6 +21,7 @@ export class ExerciseGoalConfirmationDialogComponent implements OnInit {
   estimatedWeight: number;
   startingVolumeAvailable = false;
   invalidGoal = false;
+  estimateStartingPoint: false;
 
   constructor(public dialogRef: MatDialogRef<ExerciseGoalConfirmationDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ExerciseGoalConfirmation,

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {GoalsView} from "../../model/goals/GoalsView";
-import {GoalsService} from "../../service/goals/goals.service";
-import {Observable} from "rxjs";
-import {AuthenticatedUserService} from "../../service/authentication-service/authenticated-user.service";
+import {GoalsView} from '../../model/goals/GoalsView';
+import {GoalsService} from '../../service/goals/goals.service';
+import {AuthenticatedUserService} from '../../service/authentication-service/authenticated-user.service';
 
 @Component({
   selector: 'app-progress-indicators',
@@ -11,16 +10,20 @@ import {AuthenticatedUserService} from "../../service/authentication-service/aut
 })
 export class ProgressIndicatorsComponent implements OnInit {
 
-  goals: Observable<GoalsView[]>;
+  goals: GoalsView[];
 
   constructor(private goalsService: GoalsService,
               private authenticatedUser: AuthenticatedUserService) { }
 
   ngOnInit() {
-    this.goals = this.goalsService.getGoalViewsByUserId(this.authenticatedUser.user.id);
+    this.goalsService.getGoalViewsByUserId(this.authenticatedUser.user.id).subscribe(
+      response => this.goals = response
+    );
   }
 
-  removeGoal(id: bigint) {
-    this.goalsService.removeGoal(id).subscribe();
+  removeGoal(id: bigint, index: number) {
+    this.goalsService.removeGoal(id).subscribe(
+      success => this.goals.splice(index, 1)
+    );
   }
 }

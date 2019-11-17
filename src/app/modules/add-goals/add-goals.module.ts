@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {SelectExerciseDialogModule} from '../select-exercise-dialog/select-exercise-dialog.module';
 import { ExerciseGoalConfirmationDialogComponent } from './exercise-goal-confirmation-dialog/exercise-goal-confirmation-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatSelectModule,
     FormsModule,
     SelectExerciseDialogModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSlideToggleModule
   ],
   entryComponents: [
     ExerciseGoalConfirmationDialogComponent
