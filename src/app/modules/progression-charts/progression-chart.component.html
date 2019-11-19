@@ -1,0 +1,56 @@
+<div>
+  <mat-card>
+
+    <h4>
+      Select the exercise for which you want to see your progression:
+    </h4>
+
+    <button mat-stroked-button
+            (click)="openExerciseDialog()">
+      {{selectedExercise?.name || 'Select Exercise'}}
+    </button>
+
+    <h4>
+      Select the number of repetitions for which you want to see the
+      estimated maximal weight you can lift:
+    </h4>
+
+    <mat-form-field>
+      <mat-label>
+        Number of repetitions
+      </mat-label>
+      <mat-select [(ngModel)]="chartRequest.numReps">
+        <mat-option
+          *ngFor="let numReps of selectableNumReps"
+          [value]="numReps">{{numReps}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"
+            (click)="findResults()"
+            [disabled]="!(this.chartRequest.numReps && this.chartRequest.exerciseId)">
+      Find Results
+    </button>
+
+  </mat-card>
+
+  <mat-card
+    *ngIf="data && data.dates.length > 1">
+    <canvas
+      baseChart
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins">
+    </canvas>
+  </mat-card>
+
+  <mat-card *ngIf="data && data.dates.length <= 1">
+    You do not have enough results to display a graph yet.
+  </mat-card>
+
+
+</div>

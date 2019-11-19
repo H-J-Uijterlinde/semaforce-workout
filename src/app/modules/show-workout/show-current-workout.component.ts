@@ -3,7 +3,7 @@ import {WorkoutService} from '../../service/workout/workout.service';
 import {TrainingDayView} from '../../model/workout/TrainingDayView';
 import {ScheduledExercise} from '../../model/workout/ScheduledExercise';
 import {WeeklyResult} from '../../model/workout/WeeklyResult';
-import {AddResultService} from '../../service/results/add-result.service';
+import {ResultService} from '../../service/results/result.service';
 import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
@@ -30,7 +30,7 @@ export class ShowCurrentWorkoutComponent implements OnInit, OnDestroy {
   constructor(private activeRoute: ActivatedRoute,
               private router: Router,
               private workoutService: WorkoutService,
-              private resultsService: AddResultService,
+              private resultsService: ResultService,
               private snackBar: MatSnackBar) {
 
     // subscribe to router events to 'refresh' component. Otherwise the component wil not react to url parameter changes

@@ -1,3 +1,16 @@
+<mat-card class="active-completed-toggle-container">
+  <button class="active-completed-toggle-button"
+          mat-stroked-button
+          (click)="showActiveGoals()"
+          [class.underline-option]="selectedOption === 1">Show Active
+  </button>
+  <button class="active-completed-toggle-button"
+          mat-stroked-button
+          [class.underline-option]="selectedOption === 2"
+          (click)="showCompletedGoals()">Show Completed
+  </button>
+</mat-card>
+
 <mat-card *ngFor="let goal of goals let index=index">
   <mat-card-title>{{goal.title}}</mat-card-title>
   <mat-card-subtitle>{{goal.subTitle}}</mat-card-subtitle>

@@ -10,10 +10,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { AddGoalsComponent } from './add-goals/add-goals.component';
 import {MatSelectModule} from '@angular/material/select';
 import {AddGoalsModule} from '../modules/add-goals/add-goals.module';
+import { ProgressionComponent } from './progression/progression.component';
+import {ProgressionChartsModule} from '../modules/progression-charts/progression-charts.module';
 
 
 @NgModule({
-  declarations: [HomeComponent, AddGoalsComponent],
+  declarations: [HomeComponent, AddGoalsComponent, ProgressionComponent],
   imports: [
     CommonModule,
     ResultsRoutingModule,
@@ -22,7 +24,8 @@ import {AddGoalsModule} from '../modules/add-goals/add-goals.module';
     MatCardModule,
     MatButtonModule,
     MatSelectModule,
-    AddGoalsModule
+    AddGoalsModule,
+    ProgressionChartsModule
   ]
 })
 export class ResultsModule { }

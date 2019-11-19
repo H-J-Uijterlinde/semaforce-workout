@@ -11,13 +11,19 @@ import {AuthenticatedUserService} from '../../service/authentication-service/aut
 export class ProgressIndicatorsComponent implements OnInit {
 
   goals: GoalsView[];
+  activeGoals: GoalsView[];
+  completedGoals: GoalsView[];
+  selectedOption = 1;
 
   constructor(private goalsService: GoalsService,
               private authenticatedUser: AuthenticatedUserService) { }
 
   ngOnInit() {
-    this.goalsService.getGoalViewsByUserId(this.authenticatedUser.user.id).subscribe(
-      response => this.goals = response
+    this.goalsService.getGoalViewsByUserId(this.authenticatedUser.user.id, true).subscribe(
+      response => {
+        this.activeGoals = response;
+        this.goals = this.activeGoals;
+      }
     );
   }
 
@@ -25,5 +31,24 @@ export class ProgressIndicatorsComponent implements OnInit {
     this.goalsService.removeGoal(id).subscribe(
       success => this.goals.splice(index, 1)
     );
+  }
+
+  showActiveGoals() {
+    this.goals = this.activeGoals;
+    this.selectedOption = 1;
+  }
+
+  showCompletedGoals() {
+    this.selectedOption = 2;
+    if (this.completedGoals) {
+      this.goals = this.completedGoals;
+    } else {
+      this.goalsService.getGoalViewsByUserId(this.authenticatedUser.user.id, false).subscribe(
+        response => {
+          this.completedGoals = response;
+          this.goals = this.completedGoals;
+        }
+      );
+    }
   }
 }

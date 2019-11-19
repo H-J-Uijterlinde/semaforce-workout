@@ -3,11 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import {WeeklyResult} from '../../model/workout/WeeklyResult';
 import {TrainingDayView} from '../../model/workout/TrainingDayView';
 import {environment} from '../../../environments/environment';
+import {ChartRequest} from '../../model/results/chart-request';
+import {ChartData} from '../../model/results/chart-data';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddResultService {
+export class ResultService {
 
   url = environment.baseUrl;
 
@@ -17,5 +20,9 @@ export class AddResultService {
 
     return this.http.
     post<TrainingDayView>(this.url + '/api/training_days/' + trainingDayId + '/add_results', results);
+  }
+
+  getResultsForGraph(requestData: ChartRequest): Observable<ChartData> {
+    return this.http.post<ChartData>(this.url + '/api/results/graphical', requestData);
   }
 }

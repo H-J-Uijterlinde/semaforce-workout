@@ -31,6 +31,7 @@ export class ExerciseGoalConfirmationDialogComponent implements OnInit {
 
   ngOnInit() {
     this.goal = this.data.exerciseGoal;
+    console.log(this.goal.startingVolume);
     if (this.goal.startingVolume !== 0 &&
       this.goal.startingVolume < (this.goal.desiredWeight * this.goal.desiredSets * this.goal.desiredReps)) {
       this.startingVolumeAvailable = true;

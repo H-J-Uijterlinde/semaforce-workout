@@ -6,7 +6,7 @@ import {WorkoutService} from '../../service/workout/workout.service';
 import {ScheduledExercise} from '../../model/workout/ScheduledExercise';
 import {WeeklyResult} from '../../model/workout/WeeklyResult';
 import {NgForm} from '@angular/forms';
-import {AddResultService} from '../../service/results/add-result.service';
+import {ResultService} from '../../service/results/result.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -27,7 +27,7 @@ export class ShowWorkoutCondensedComponent implements OnInit {
 
   constructor(private authenticatedUser: AuthenticatedUserService,
               private workoutService: WorkoutService,
-              private resultsService: AddResultService,
+              private resultsService: ResultService,
               private snackBar: MatSnackBar) {
     this.currentWorkout = authenticatedUser.user.currentWorkout;
   }

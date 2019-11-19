@@ -14,3 +14,19 @@ mat-card {
   background-color: #1c313a;
   height: 7px !important;
 }
+
+.active-completed-toggle-button {
+  width: 50%;
+  background-color: whitesmoke;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.active-completed-toggle-container {
+  padding: 0 !important;
+  background-color: rgba(245, 245, 245, 0);
+}
+
+.underline-option{
+  text-decoration: underline;
+}

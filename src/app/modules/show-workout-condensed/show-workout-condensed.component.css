@@ -34,9 +34,6 @@
 
 }
 
-::ng-deep.mat-expansion-panel-body {
-}
-
 button {
   margin: 10px 0;
   width: 100%;
@@ -54,7 +51,7 @@ th, td {
 }
 
 .rest {
-  border-right: 1px solid rgba(167, 194, 205, 0.3)
+  border-right: 2px solid rgba(167, 194, 205, 0.3)
 }
 
 thead {
@@ -111,5 +108,8 @@ button {
   background-color: #1b3039;
   font-size: 16px;
   letter-spacing: 0.15em;
+}
 
+.rpe{
+  border-right: 2px solid rgba(167, 194, 205, 0.3)
 }

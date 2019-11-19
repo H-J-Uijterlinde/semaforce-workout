@@ -27,8 +27,8 @@ export class GoalsService {
     return this.http.put(this.url + '/api/goals/exercise_goals', goal);
   }
 
-  getGoalViewsByUserId(userId: bigint): Observable<GoalsView[]> {
-    return this.http.get<GoalsView[]>(this.url + '/api/goals/view/user=' + userId);
+  getGoalViewsByUserId(userId: bigint, isActive: boolean): Observable<GoalsView[]> {
+    return this.http.get<GoalsView[]>(this.url + '/api/goals/view/user=' + userId + '/active=' + isActive);
   }
 
   removeGoal(goalId: bigint) {
