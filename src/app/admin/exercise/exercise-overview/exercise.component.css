@@ -6,6 +6,7 @@
   max-width: 750px;
   max-height: 75% !important;
   overflow-y: hidden;
+  top: 40%;
 }
 
 .admin-exercise-overview-container {

@@ -6,8 +6,6 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AddUserComponent} from './authentication/add-user/add-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HeaderComponent} from './layout/header/header.component';
-import {FooterComponent} from './layout/footer/footer.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {LogoutComponent} from './authentication/logout/logout.component';
 import {BasicAuthHttpInterceptorServiceService} from './service/authentication-service/basic-auth-http-interceptor-service.service';
@@ -15,17 +13,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {HomeComponent} from './layout/home/home.component';
 import {AuthenticatedUserResolver} from './service/resolvers/AuthenticatedUser.resolver';
-import {MatTabsModule} from "@angular/material/tabs";
-import {ShowWorkoutCondensedModule} from "./modules/show-workout-condensed/show-workout-condensed.module";
-import {AllTrainingdaysResolverService} from "./service/resolvers/all-trainingdays-resolver.service";
-import {DeviceDetectorModule} from "ngx-device-detector";
+import {MatTabsModule} from '@angular/material/tabs';
+import {ShowWorkoutCondensedModule} from './modules/show-workout-condensed/show-workout-condensed.module';
+import {AllTrainingdaysResolverService} from './service/resolvers/all-trainingdays-resolver.service';
+import {DeviceDetectorModule} from 'ngx-device-detector';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddUserComponent,
-    HeaderComponent,
-    FooterComponent,
     LoginComponent,
     LogoutComponent,
     HomeComponent
@@ -40,7 +37,8 @@ import {DeviceDetectorModule} from "ngx-device-detector";
     ReactiveFormsModule,
     MatTabsModule,
     ShowWorkoutCondensedModule,
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
+    MatSidenavModule
   ],
   providers: [
     {

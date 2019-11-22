@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ChartDataSets, ChartType} from 'chart.js';
-import {Color, Label} from 'ng2-charts';
+import {Color} from 'ng2-charts';
 import {SelectExerciseDialogComponent} from '../select-exercise-dialog/select-exercise-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {ExerciseView} from '../../model/exercise/ExerciseView';
@@ -8,7 +8,6 @@ import {ChartData} from '../../model/results/chart-data';
 import {ChartRequest} from '../../model/results/chart-request';
 import {AuthenticatedUserService} from '../../service/authentication-service/authenticated-user.service';
 import {ResultService} from '../../service/results/result.service';
-import {pipe} from 'rxjs';
 
 @Component({
   selector: 'app-progression-chart',
@@ -22,7 +21,7 @@ export class ProgressionChartComponent implements OnInit {
   timeFormat = 'YYYY/MM/DD/HH/mm/ss';
 
   lineChartData: ChartDataSets[] = [
-    { data: [], label: 'Estimated Weight'}
+    { data: [], label: 'Estimated Weight', lineTension: 0.2}
   ];
 
   lineChartLabels;

@@ -1,10 +1,9 @@
-.upper {
-  background-color: rgba(245, 245, 245, 0.96);
-  width: fit-content;
-}
-
-.container {
-  overflow-x: auto;
+.create-workout-cards {
+  margin: 10% auto;
+  width: 75%;
+  max-width: 400px;
+  text-align: center;
+  background-color: rgba(255, 242, 223, 0.95);
 }
 
 .workout-configuration-form {
@@ -18,7 +17,7 @@
 }
 
 mat-vertical-stepper {
-  background-color: inherit;
+  background-color: rgba(245, 245, 245, 0);
 }
 
 .select-exercises-container {
@@ -130,7 +129,7 @@ p {
 }
 
 .save-button {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .remove-exercise-button {

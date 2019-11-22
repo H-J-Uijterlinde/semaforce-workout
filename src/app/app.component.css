@@ -1,8 +1,168 @@
-.page-container {
-  position: relative;
+.side-nav-container {
   min-height: 100vh;
+  background-color: rgba(245, 245, 245, 0) !important;
+  padding-bottom: 3em;
 }
 
-.content-wrap {
-  padding-bottom: 3rem;
+.side-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  background-color: rgba(69, 90, 100, 0.85);
+  border-radius: 0 100px 15px 0;
+}
+
+.small-screen-sidenav {
+  background-color: rgba(69, 90, 100, 0.85);
+}
+
+.sub-menu-expansion-panel {
+  background-color: inherit !important;
+  box-shadow: none !important;
+  text-align: left;
+  color: white;
+}
+
+.mat-expansion-panel-header-title {
+  text-decoration: none;
+  color: white;
+  padding: 0;
+}
+
+.mat-expansion-panel-header {
+  padding: 0;
+}
+
+.mat-action-row {
+  justify-content: flex-start;
+}
+
+::ng-deep.mat-expansion-panel-spacing {
+  margin: 0 !important;
+}
+
+mat-toolbar {
+  background-color: #1b3039;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+mat-icon {
+  margin-top: 50%;
+  font-size: 150%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-item {
+  font-size: 75%;
+}
+
+.logo {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 150%;
+}
+
+.upper-row {
+  box-shadow: 0 2px 2px #000000;
+}
+
+.second-row {
+  height: 75%;
+  box-shadow: 0 2px 2px black;
+}
+
+.menu-icon {
+  margin-top: auto;
+}
+
+.mat-divider {
+  margin: 0 10px 0 10px;
+  background-color: white;
+}
+
+button {
+  color: whitesmoke;
+}
+
+.workout-menu-item {
+  background-color: inherit;
+  border: none;
+  font-size: 14px;
+  padding: 0;
+  outline-style: none;
+}
+
+.content {
+  position: initial;
+}
+
+.mat-nav-header {
+  color: white;
+  padding: 20px;
+}
+
+.avatar-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: white;
+}
+
+.username {
+  padding-bottom: 5px;
+  margin-bottom: 0;
+}
+
+.mat-list-item {
+  color: white;
+  font-size: 18px;
+}
+
+ul {
+  list-style-type: none;
+  color: white;
+  margin-top: 0;
+}
+
+li {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.day-numbers {
+  padding-left: 20px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 3rem;
+  width: 100%;
+  text-align: center;
+  background-color: #1b3039;
+  box-shadow: 0 -2px 2px black;
+}
+
+.footer-content {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.selectedOption {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.15em;
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {UserView} from "../../model/user/UserView";
-import {HttpClientService} from "../http-client.service";
+import {UserView} from '../../model/user/UserView';
+import {HttpClientService} from '../http-client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,7 @@ export class AuthenticatedUserService {
     this.http.getUserViewByUsername(sessionStorage.getItem('username')).subscribe(
       response => {
         this._user = response;
+        sessionStorage.setItem('user', JSON.stringify(response));
       }
     );
   }

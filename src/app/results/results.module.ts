@@ -12,10 +12,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {AddGoalsModule} from '../modules/add-goals/add-goals.module';
 import { ProgressionComponent } from './progression/progression.component';
 import {ProgressionChartsModule} from '../modules/progression-charts/progression-charts.module';
+import { GoalsComponent } from './goals/goals.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, AddGoalsComponent, ProgressionComponent],
+  declarations: [HomeComponent, AddGoalsComponent, ProgressionComponent, GoalsComponent],
   imports: [
     CommonModule,
     ResultsRoutingModule,
