@@ -24,7 +24,7 @@ export class AddUserComponent implements OnInit {
   constructor(private httpClientService: HttpClientService,
               private router: Router,
               private snackBar: MatSnackBar,
-              private spinnerService: DisplaySpinnerService) {
+              public spinnerService: DisplaySpinnerService) {
   }
 
   ngOnInit() {

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private snackbar: MatSnackBar,
               private authenticatedUser: AuthenticatedUserService,
-              private spinnerService: DisplaySpinnerService) {
+              public spinnerService: DisplaySpinnerService) {
   }
 
   ngOnInit() {
