@@ -7,7 +7,7 @@
   box-shadow: 3px 3px 3px #1c1a1a;
   border-radius: 5px;
   background-color: #fffbf5;
-  margin: 30px 0 0 50px;
+  margin: 3px 0 0 50px;
   display: inline-flex;
   flex-direction: row;
 }
@@ -108,19 +108,18 @@ input {
 }
 
 .save-workout-button {
-  position: absolute;
-  bottom: 125px;
-  left: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .mat-raised-button {
-  width: 155px;
-  height: 75px;
-  font-weight: bolder;
   text-transform: uppercase;
+  font-size: 16px;
   letter-spacing: 0.15em;
   box-shadow: 2px 2px 1px #1c1a1a;
   border-radius: 8px;
+  margin: 15px auto;
+  padding: 15px
 }
 
 .previous-weeks {

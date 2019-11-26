@@ -1,0 +1,31 @@
+.current-workout-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.invisible {
+  display: none;
+}
+
+.condensed-workout-holder{
+  max-width: 750px;
+  width: 97%;
+  margin: 15px auto;
+}
+
+mat-checkbox {
+  color: black;
+  font-size: 16px;
+  background-color: rgba(245, 245, 245, 0.45);
+  width: fit-content;
+  padding: 0 5px;
+}
+
+.checkbox-condensed-false {
+  margin: 15px 25% 0 75%;
+}
+
+.checkbox-condensed {
+  margin: 15px 37% 0 63%;
+}

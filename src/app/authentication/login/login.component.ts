@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../../service/authentication-service/authentication.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AuthenticatedUserService} from '../../service/authentication-service/authenticated-user.service';
-import {DisplaySpinnerService} from "../../service/navigation/display-spinner.service";
+import {DisplaySpinnerService} from '../../service/navigation/display-spinner.service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.spinnerService.displaySpinner = true;
     this.authenticationService.authenticate(this.username, this.password).subscribe(
       data => {
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
         this.invalidLogin = false;
         this.authenticatedUser.setUser();
       },

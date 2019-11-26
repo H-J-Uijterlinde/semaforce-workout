@@ -3,17 +3,34 @@ mat-card {
   flex-direction: column;
   text-align: center;
   margin: 10px auto;
-  max-width: 90%;
+  width: 90%;
+}
+
+.chart-selection-card {
+  max-width: 750px;
+  background-color: rgba(245, 245, 245, 0.95);
+  padding: 0;
+
+}
+
+.chart-selection-card-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: 100%;
 }
 
 mat-form-field {
   max-width: 50%;
-  margin: 0px auto;
+  margin: 0 auto;
   text-align: center;
 }
 
 button {
   width: 50%;
   max-width: 300px;
-  margin: 0px auto;
+  margin: 0 auto;
 }

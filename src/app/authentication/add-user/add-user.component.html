@@ -1,3 +1,22 @@
+<mat-toolbar color="primary-dark">
+  <mat-toolbar-row class="upper-row">
+
+
+    <span class="logo">
+      <a class="logo-link" href="https://nl.wikipedia.org/wiki/Dommel_(stripfiguur)">
+        Semaforce
+      </a>
+    </span>
+
+    <mat-spinner
+      diameter="35"
+      color="'white'"
+      *ngIf="spinnerService.displaySpinner"></mat-spinner>
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
 <div class="upper">
   <div class="container">
 
@@ -30,3 +49,10 @@
     </div>
   </div>
 </div>
+
+<mat-toolbar class="footer">
+  <div class="footer-content">
+    <span class="text-muted">All Rights Reserved 2019 @Semaforce</span>
+  </div>
+
+</mat-toolbar>

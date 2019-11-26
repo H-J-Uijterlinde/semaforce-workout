@@ -1,10 +1,34 @@
-.home {
-  width: 97%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  text-align: center;
-  padding: 5px;
-  max-width: 750px;
-  margin: 15px auto;
+mat-grid-list {
+  width: 90%;
+  margin: 75px auto 0;
+  max-width: 1250px;
 }
 
+mat-grid-tile {
+  background-color: rgba(69, 75, 100, 0.95);
+  color: white;
+}
+
+.home-screen-tile-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  width: 100%;
+}
+
+.home-screen-tile-content-container {
+  margin: auto;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+}
+
+h1 {
+  letter-spacing: 0.1em;
+}

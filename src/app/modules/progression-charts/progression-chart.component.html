@@ -1,5 +1,7 @@
 <div>
-  <mat-card>
+  <mat-card class="chart-selection-card">
+    <img src="../../../assets/chart.jpg"
+    alt="to be defined">
 
     <h4>
       Select the exercise for which you want to see your progression:
@@ -10,27 +12,30 @@
       {{selectedExercise?.name || 'Select Exercise'}}
     </button>
 
-    <h4>
-      Select the number of repetitions for which you want to see the
-      estimated maximal weight you can lift:
-    </h4>
+    <div class="chart-selection-card-content">
+      <h4>
+        Select the number of repetitions for which you want to see the
+        estimated maximal weight you can lift:
+      </h4>
 
-    <mat-form-field>
-      <mat-label>
-        Number of repetitions
-      </mat-label>
-      <mat-select [(ngModel)]="chartRequest.numReps">
-        <mat-option
-          *ngFor="let numReps of selectableNumReps"
-          [value]="numReps">{{numReps}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>
+          Number of repetitions
+        </mat-label>
+        <mat-select [(ngModel)]="chartRequest.numReps">
+          <mat-option
+            *ngFor="let numReps of selectableNumReps"
+            [value]="numReps">{{numReps}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <button mat-raised-button color="primary"
-            (click)="findResults()"
-            [disabled]="!(this.chartRequest.numReps && this.chartRequest.exerciseId)">
-      Find Results
-    </button>
+      <button mat-raised-button color="primary"
+              (click)="findResults()"
+              [disabled]="!(this.chartRequest.numReps && this.chartRequest.exerciseId)">
+        Find Results
+      </button>
+    </div>
+
 
   </mat-card>
 

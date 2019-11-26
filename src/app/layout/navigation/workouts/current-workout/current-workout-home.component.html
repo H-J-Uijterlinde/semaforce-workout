@@ -1,0 +1,18 @@
+<div class="current-workout-container">
+
+  <mat-checkbox
+    [class.checkbox-condensed-false]="!showCondensed"
+    [class.checkbox-condensed]="showCondensed"
+    *ngIf="(isWeb$ | async)"
+    [(ngModel)]="showCondensed">
+    Compact mode
+  </mat-checkbox>
+  <app-show-current-workout
+    [class.invisible]="showCondensed"
+    [workout]="workout"></app-show-current-workout>
+
+  <div class="condensed-workout-holder">
+    <app-show-workout-condensed *ngIf="!(isWeb$| async) || showCondensed"></app-show-workout-condensed>
+  </div>
+</div>
+

@@ -12,5 +12,56 @@
   position: absolute;
   left: 40%;
   top: 30%;
+}
 
+mat-toolbar {
+  background-color: #1b3039;
+}
+
+mat-icon {
+  margin-top: 50%;
+  font-size: 150%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-item {
+  font-size: 75%;
+}
+
+.logo {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 150%;
+}
+
+.upper-row {
+  box-shadow: 0 2px 2px #000000;
+}
+
+.logo-link {
+  color: white;
+  text-decoration: none;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 3rem;
+  width: 100%;
+  text-align: center;
+  background-color: #1b3039;
+  box-shadow: 0 -2px 2px black;
+}
+
+.footer-content {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 14px;
 }

@@ -1,4 +1,53 @@
-<div class="home">
-  <app-show-workout-condensed>
-  </app-show-workout-condensed>
-</div>
+<mat-grid-list [cols]="(isWeb$ | async) ? 2 : 1"
+               [rowHeight]="'1:1'"
+               [gutterSize]="(isWeb$ | async) ? '100px' : '25px'">
+
+  <mat-grid-tile (click)="router.navigateByUrl('/workouts/current_workout/1')">
+    <div class="home-screen-tile-container">
+      <div class="home-sceen-tile-image-container">
+        <img src="../../../assets/weight-room.jpg">
+      </div>
+      <div class="home-screen-tile-content-container">
+        <h1>Workout</h1>
+        <p>Continue your current workout!</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile (click)="router.navigateByUrl('/results/progression')">
+    <div class="home-screen-tile-container">
+      <div class="home-sceen-tile-image-container">
+        <img src="../../../assets/chart.jpg">
+      </div>
+      <div class="home-screen-tile-content-container">
+        <h1>Progression</h1>
+        <p>Click here to see your progression!</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile (click)="router.navigateByUrl('results/goals')">
+    <div class="home-screen-tile-container">
+      <div class="home-sceen-tile-image-container">
+        <img src="../../../assets/add-goals-pic.jpg">
+      </div>
+      <div class="home-screen-tile-content-container">
+        <h1>Goals</h1>
+        <p>Check the status of your goals or set new ones!</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile (click)="router.navigateByUrl('/workouts/create_workout')">
+    <div class="home-screen-tile-container">
+      <div class="home-sceen-tile-image-container">
+        <img src="../../../assets/create-new.jpg">
+      </div>
+      <div class="home-screen-tile-content-container">
+        <h1>New Workout</h1>
+        <p>Design your own workout from scratch!</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+</mat-grid-list>
