@@ -1,32 +1,54 @@
 mat-card {
-  margin: 15px auto;
+  margin: 10px auto;
   width: 90%;
   max-width: 500px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 251, 245, 0.9);
 }
 
 ::ng-deep.mat-progress-bar-buffer {
   background-color: #cfd8dc;
 }
 
-::ng-deep.mat-progress-bar{
+::ng-deep.mat-progress-bar {
   background-color: #1c313a;
   height: 7px !important;
 }
 
 .active-completed-toggle-button {
   width: 50%;
-  background-color: whitesmoke;
   font-size: 16px;
   letter-spacing: 0.1em;
+  background-color: rgba(255, 251, 245, 0.9);
+  margin: 0 2px;
 }
 
 .active-completed-toggle-container {
-  padding: 0 !important;
-  background-color: rgba(245, 245, 245, 0);
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+  max-width: 450px;
 }
 
-.underline-option{
+.underline-option {
   text-decoration: underline;
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+  background-color: inherit;
+  padding: 0;
+}
+
+.remove-goal-button {
+  float: right;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+::ng-deep.mat-expansion-panel-body {
+  padding: 0;
 }

@@ -6,6 +6,10 @@ import {RouterModule} from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {SelectExerciseDialogModule} from "../select-exercise-dialog/select-exercise-dialog.module";
 
 
 
@@ -20,7 +24,11 @@ import {FormsModule} from '@angular/forms';
     RouterModule,
     MatExpansionModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    SelectExerciseDialogModule
   ]
 })
 export class ShowWorkoutCondensedModule { }

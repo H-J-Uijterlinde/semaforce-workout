@@ -14,11 +14,13 @@ import {SelectExerciseDialogModule} from '../../../modules/select-exercise-dialo
 import {CurrentWorkoutHomeComponent} from './current-workout/current-workout-home.component';
 import {ShowWorkoutCondensedModule} from '../../../modules/show-workout-condensed/show-workout-condensed.module';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { InstantWorkoutComponent } from './instant-workout/instant-workout.component';
 
 
 @NgModule({
   declarations: [WorkoutMenuComponent, HomeComponent, CreateWorkoutComponent,
-    CurrentWorkoutHomeComponent],
+    CurrentWorkoutHomeComponent,
+    InstantWorkoutComponent],
   imports: [
     CommonModule,
     WorkoutRoutingModule,

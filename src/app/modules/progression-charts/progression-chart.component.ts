@@ -43,7 +43,11 @@ export class ProgressionChartComponent implements OnInit {
         time: {
           parser: this.timeFormat,
           // round: 'day'
-          tooltipFormat: 'll HH:mm'
+          tooltipFormat: 'll',
+          unit: 'day',
+          displayFormats: {
+            day: 'll'
+          }
         },
         scaleLabel: {
           display: true,

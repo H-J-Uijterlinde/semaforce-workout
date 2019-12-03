@@ -1,0 +1,8 @@
+.instant-workout-containter {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 750px;
+  width: 97%;
+  margin: 15px auto;
+}

@@ -1,113 +1,188 @@
-<div *ngIf="!currentWorkout">
+<div *ngIf="!authenticatedUser.user.currentWorkout; else condensedWorkout">
   <h3>You have not created a workout yet!</h3>
   Click <a routerLink="/workouts/create_workout">here</a> to create your first workout.
 </div>
 
-<div *ngIf="currentWorkout"
-     class="current-workout-summary-container">
+<ng-template #condensedWorkout>
+  <div class="current-workout-summary-container">
 
-  <mat-tab-group (selectedIndexChange)="setTrainingDay($event + 1)"
-                 animationDuration="0ms"
-                 mat-align-tabs="center">
-    <mat-tab *ngFor="let dayNumber of dayNumbers"
-             [label]="'Day ' + dayNumber">
-      <ng-template matTabContent>
-        <form novalidate #resultsForm="ngForm">
+    <mat-tab-group (selectedIndexChange)="setTrainingDay($event + 1)"
+                   animationDuration="0ms"
+                   mat-align-tabs="center">
+      <mat-tab *ngFor="let dayNumber of dayNumbers"
+               [label]="'Day ' + dayNumber">
+        <ng-template matTabContent>
+
           <mat-accordion>
-            <mat-expansion-panel *ngFor="let scheduledExercise of exercises let exerciseIndex=index">
+            <form novalidate #resultsForm="ngForm">
+              <mat-expansion-panel *ngFor="let scheduledExercise of exercises let exerciseIndex=index">
+                <mat-expansion-panel-header>
+
+                  <mat-panel-title>
+                    {{scheduledExercise.exercise.name}}
+                  </mat-panel-title>
+
+                  <mat-panel-description>
+                    {{scheduledExercise.configuration.numSets}} sets<br>
+                    {{scheduledExercise.configuration.minReps}} - {{scheduledExercise.configuration.maxReps}} reps<br>
+                  </mat-panel-description>
+
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <table>
+                    <thead>
+                    <tr>
+                      <th class="sticky-set-number"></th>
+                      <th class="sticky-rest-number"></th>
+                      <th
+                        *ngFor="let week of weekNumbers"
+                        [class.coming-week]="week > currentWeek"
+                        colspan="3">Week {{week}}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="sticky-set-number">Set</th>
+                      <th class="sticky-rest-number">Rest (s)</th>
+                      <th *ngFor="let number of getWeekNumbers(3) let index=index">
+                        {{getTableHeader(number)}}
+                      </th>
+                      <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr *ngFor="let setNumber of getSetNumbers(scheduledExercise) let lastSet = last">
+                      <td class="sticky-set-number"
+                          [class.last-set]="lastSet">{{setNumber}}</td>
+                      <td class="sticky-rest-number rest"
+                          [class.last-set]="lastSet">{{scheduledExercise.configuration.restBetweenSets}}</td>
+                      <td *ngFor="let columnNumber of getWeekNumbers(3) let index=index"
+                          [class.last-set]="lastSet"
+                          [class.rpe]="columnNumber === 3"
+                          [class.canceled-set]="setNumber > setsPerExercise.get(scheduledExercise) && determineIfColumnsBelongToCurrentWeek(index)"
+                          class="results">
+                        <div
+                          *ngIf="determineIfColumnsBelongToCurrentWeek(index) && setNumber <= setsPerExercise.get(scheduledExercise)">
+
+
+                          <label>
+
+                            <input *ngIf="columnNumber === 1" [name]="'rpe' + exerciseIndex + setNumber + columnNumber"
+                                   type="number"
+                                   [(ngModel)]="scheduledExercise.results.weeklyResults[index/3 + 1].rpe[setNumber-1]"
+                                   required>
+                            <input *ngIf="columnNumber === 2"
+                                   [name]="'weights' + exerciseIndex + setNumber + columnNumber"
+                                   type="number"
+                                   [(ngModel)]="scheduledExercise.results.weeklyResults[(index + 2)/3].weightsLifted[setNumber-1]"
+                                   required>
+                            <input *ngIf="columnNumber === 3" [name]="'reps' + exerciseIndex + setNumber + columnNumber"
+                                   type="number"
+                                   [(ngModel)]="scheduledExercise.results.weeklyResults[(index + 1)/3].repetitionsPerformed[setNumber-1]"
+                                   required>
+                          </label>
+
+
+                        </div>
+
+                        <div class="previous-weeks" *ngIf="determineIfColumnsBelongToPreviousWeek(index)">
+
+                          <div
+                            *ngIf="columnNumber === 1">
+                            {{scheduledExercise.results.weeklyResults[index / 3 + 1]?.numbersLifted[setNumber]?.rpe || '-'}}
+                          </div>
+                          <div
+                            *ngIf="columnNumber === 2">
+                            {{scheduledExercise.results.weeklyResults[(index + 2) / 3]?.numbersLifted[setNumber]?.weightLifted || '-'}}</div>
+                          <div
+                            *ngIf="columnNumber === 3">
+                            {{scheduledExercise.results.weeklyResults[(index + 1) / 3]?.numbersLifted[setNumber]?.repetitionsPerformed || '-'}}
+                          </div>
+
+                        </div>
+                      </td>
+                      <td *ngIf="lastSet"
+                          (click)="cancelSet(scheduledExercise, setNumber)">
+                        -
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </ng-template>
+
+              </mat-expansion-panel>
+            </form>
+
+            <mat-expansion-panel #panel>
               <mat-expansion-panel-header>
-
-                <mat-panel-title>
-                  {{scheduledExercise.exercise.name}}
-                </mat-panel-title>
-
-                <mat-panel-description>
-                  {{scheduledExercise.configuration.numSets}} sets<br>
-                  {{scheduledExercise.configuration.minReps}} - {{scheduledExercise.configuration.maxReps}} reps<br>
-                </mat-panel-description>
-
+                Add Exercise
               </mat-expansion-panel-header>
 
-              <table>
-                <thead>
-                <tr>
-                  <th class="sticky-set-number"></th>
-                  <th class="sticky-rest-number"></th>
-                  <th
-                    *ngFor="let week of weekNumbers"
-                    [class.coming-week]="week > currentWeek"
-                    colspan="3">Week {{week}}</th>
-                </tr>
-                <tr>
-                  <th class="sticky-set-number">Set</th>
-                  <th class="sticky-rest-number">Rest (s)</th>
-                  <th *ngFor="let number of getWeekNumbers(3) let index=index"
-                      [class.coming-week]="!determineIfColumnsBelongToCurrentWeek(index) && !determineIfColumnsBelongToPreviousWeek(index)">
-                    {{getTableHeader(number)}}
-                  </th>
-                </tr>
-                </thead>
+              <div class="add-exercise-container">
+                <button
+                  class="add-exercise-button"
+                  mat-stroked-button
+                  (click)="openSelectExerciseDialog()">
+                  {{newExercise.exercise?.name || 'Select Exercise'}}
+                </button>
 
-                <tbody>
-                <tr *ngFor="let setNumber of getSetNumbers(scheduledExercise) let lastSet = last">
-                  <td class="sticky-set-number"
-                      [class.last-set]="lastSet">{{setNumber}}</td>
-                  <td class="sticky-rest-number rest"
-                      [class.last-set]="lastSet">{{scheduledExercise.configuration.restBetweenSets}}</td>
-                  <td *ngFor="let columnNumber of getWeekNumbers(3) let index=index"
-                      [class.last-set]="lastSet"
-                      [class.coming-week]="!determineIfColumnsBelongToCurrentWeek(index) && !determineIfColumnsBelongToPreviousWeek(index)"
-                      [class.rpe]="columnNumber === 3"
-                      class="results">
-                    <div *ngIf="determineIfColumnsBelongToCurrentWeek(index)">
+                <form class="add-exercise-container"
+                      #addExerciseForm="ngForm"
+                      (submit)="addExercise(addExerciseForm, panel); addExerciseForm.resetForm();">
+                  <mat-form-field>
+                    <input class="enter-sets-input"
+                           matInput placeholder="Number of sets"
+                           name="numSets"
+                           [(ngModel)]="newExercise.configuration.numSets"
+                           required>
+                  </mat-form-field>
 
+                  <mat-form-field>
+                    <input class="enter-sets-input"
+                           matInput placeholder="Minimum repetitions"
+                           name="minReps"
+                           [(ngModel)]="newExercise.configuration.minReps"
+                           required>
+                  </mat-form-field>
 
-                      <label>
+                  <mat-form-field>
+                    <input class="enter-sets-input"
+                           matInput placeholder="Maximum repetitions"
+                           name="maxReps"
+                           [(ngModel)]="newExercise.configuration.maxReps"
+                           required>
+                  </mat-form-field>
 
-                        <input *ngIf="columnNumber === 1" [name]="'rpe' + exerciseIndex + setNumber + columnNumber"
-                               type="number"
-                               [(ngModel)]="scheduledExercise.results.weeklyResults[index/3 + 1].rpe[setNumber-1]"
-                               required>
-                        <input *ngIf="columnNumber === 2" [name]="'weights' + exerciseIndex + setNumber + columnNumber"
-                               type="number"
-                               [(ngModel)]="scheduledExercise.results.weeklyResults[(index + 2)/3].weightsLifted[setNumber-1]"
-                               required>
-                        <input *ngIf="columnNumber === 3" [name]="'reps' + exerciseIndex + setNumber + columnNumber"
-                               type="number"
-                               [(ngModel)]="scheduledExercise.results.weeklyResults[(index + 1)/3].repetitionsPerformed[setNumber-1]"
-                               required>
-                      </label>
+                  <mat-form-field>
+                    <input class="enter-sets-input"
+                           matInput placeholder="Rest between sets"
+                           name="restBetweenSets"
+                           [(ngModel)]="newExercise.configuration.restBetweenSets"
+                           required>
+                  </mat-form-field>
 
+                  <button mat-raised-button
+                          color="primary"
+                          class="add-exercise-button"
+                          types="submit">Add Exercise
+                  </button>
+                </form>
 
-                    </div>
-
-                    <div class="previous-weeks" *ngIf="determineIfColumnsBelongToPreviousWeek(index)">
-
-                      <div
-                        *ngIf="columnNumber === 1">{{scheduledExercise.results.weeklyResults[index / 3 + 1].numbersLifted[setNumber].rpe}}</div>
-                      <div
-                        *ngIf="columnNumber === 2">{{scheduledExercise.results.weeklyResults[(index + 2) / 3].numbersLifted[setNumber].weightLifted}}</div>
-                      <div
-                        *ngIf="columnNumber === 3">{{scheduledExercise.results.weeklyResults[(index + 1) / 3].numbersLifted[setNumber].repetitionsPerformed}}</div>
-
-                    </div>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
+              </div>
 
             </mat-expansion-panel>
           </mat-accordion>
-        </form>
 
 
-        <button mat-raised-button
-                color="accent"
-                (click)="saveResults(resultsForm)">Save Results
-        </button>
-      </ng-template>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+          <button mat-raised-button
+                  color="accent"
+                  (click)="saveResults(resultsForm)">Save Results
+          </button>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</ng-template>
+
 
 

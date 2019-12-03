@@ -2,7 +2,7 @@
                [rowHeight]="'1:1'"
                [gutterSize]="(isWeb$ | async) ? '100px' : '25px'">
 
-  <mat-grid-tile (click)="router.navigateByUrl('/workouts/current_workout/1')">
+  <mat-grid-tile (click)="router.navigateByUrl('/workouts/current_workout')">
     <div class="home-screen-tile-container">
       <div class="home-sceen-tile-image-container">
         <img src="../../../assets/weight-room.jpg">
@@ -10,6 +10,18 @@
       <div class="home-screen-tile-content-container">
         <h1>Workout</h1>
         <p>Continue your current workout!</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile (click)="router.navigateByUrl('/workouts/instant_workout')">
+    <div class="home-screen-tile-container">
+      <div class="home-sceen-tile-image-container">
+        <img src="../../../assets/weight-stack.jpg">
+      </div>
+      <div class="home-screen-tile-content-container">
+        <h1>Instant Training</h1>
+        <p>Select this option to start training and save your results</p>
       </div>
     </div>
   </mat-grid-tile>

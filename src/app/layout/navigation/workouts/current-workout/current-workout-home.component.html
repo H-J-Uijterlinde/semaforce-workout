@@ -9,10 +9,13 @@
   </mat-checkbox>
   <app-show-current-workout
     [class.invisible]="showCondensed"
-    [workout]="workout"></app-show-current-workout>
+    [allTrainingDays]="allTrainingDays"></app-show-current-workout>
 
   <div class="condensed-workout-holder">
-    <app-show-workout-condensed *ngIf="!(isWeb$| async) || showCondensed"></app-show-workout-condensed>
+    <app-show-workout-condensed
+      [allTrainingDays]="allTrainingDays"
+      (addResultsEvent)="AddResults($event[0], $event[1])"
+      *ngIf="!(isWeb$| async) || showCondensed"></app-show-workout-condensed>
   </div>
 </div>
 

@@ -20,6 +20,8 @@ export class SelectExerciseDialogComponent implements OnInit {
   // Properties needed to keep track of the users choices.
   selectedExercises: Map<bigint, ExerciseView> = new Map<bigint, ExerciseView>();
 
+  displayFilter = false;
+
   constructor(public dialogRef: MatDialogRef<SelectExerciseDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ExerciseData) {
   }
@@ -46,5 +48,9 @@ export class SelectExerciseDialogComponent implements OnInit {
 
   setExercises($event: ExerciseView[]) {
     this.exercises = $event;
+  }
+
+  showFilter() {
+    this.displayFilter = !this.displayFilter;
   }
 }

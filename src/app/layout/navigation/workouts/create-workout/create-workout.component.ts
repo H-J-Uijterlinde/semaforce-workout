@@ -11,7 +11,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {SelectExerciseDialogComponent} from '../../../../modules/select-exercise-dialog/select-exercise-dialog.component';
 import {Router} from '@angular/router';
 import {MatStepper} from '@angular/material/stepper';
-import {DisplaySpinnerService} from "../../../../service/navigation/display-spinner.service";
+import {DisplaySpinnerService} from '../../../../service/navigation/display-spinner.service';
 
 @Component({
   selector: 'app-create-workout',
@@ -79,7 +79,10 @@ export class CreateWorkoutComponent implements OnInit {
       data: {
         selectedExercise: [],
         multi
-      }
+      },
+      height: '90%',
+      width: 'fit-content',
+      maxWidth: '90%'
     });
 
     dialogRef.afterClosed().subscribe(

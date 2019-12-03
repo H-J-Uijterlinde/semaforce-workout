@@ -8,7 +8,8 @@ export class WeeklyResult {
     public weightsLifted: number[],
     public repetitionsPerformed: number[],
     public rpe: number[],
-    public numbersLifted: Score[]
+    public numbersLifted: Score[],
+    public exerciseId: bigint
   ) {
   }
 }

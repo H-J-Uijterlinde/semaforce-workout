@@ -38,7 +38,10 @@ export class AddExerciseGoalComponent implements OnInit {
       data: {
         selectedExercise: [],
         multi: false
-      }
+      },
+      height: '90%',
+      width: 'fit-content',
+      maxWidth: '90%'
     });
 
     dialogRef.afterClosed().subscribe(

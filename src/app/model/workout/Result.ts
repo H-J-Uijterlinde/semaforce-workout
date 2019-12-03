@@ -1,6 +1,6 @@
-import {UserView} from "../user/UserView";
-import {ExerciseView} from "../exercise/ExerciseView";
-import {WeeklyResult} from "./WeeklyResult";
+import {UserView} from '../user/UserView';
+import {ExerciseView} from '../exercise/ExerciseView';
+import {WeeklyResult} from './WeeklyResult';
 
 export class Result {
 

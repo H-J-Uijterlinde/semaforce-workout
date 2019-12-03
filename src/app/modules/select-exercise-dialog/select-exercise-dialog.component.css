@@ -1,15 +1,32 @@
 .select-exercises-dialog {
   display: flex;
   flex-direction: row;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  max-height: 750px;
 }
 
 .exercise-list-container {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
   overflow-y: hidden;
   overflow-x: hidden;
+}
+
+.hold-filter-container {
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hide {
+  display: none;
+}
+
+.filter-container {
+  overflow-y: hidden !important;
+}
+
+.hide-show-filter {
+  margin-bottom: 15px;
 }
 
 mat-selection-list {

@@ -3,7 +3,9 @@ export class GoalsView {
     public id: bigint,
     public title: string,
     public subTitle: string,
-    public completionPercentage: number
+    public completionPercentage: number,
+    public startedDate: Date,
+    public lastUpdateDate: Date
   ) {
   }
 }

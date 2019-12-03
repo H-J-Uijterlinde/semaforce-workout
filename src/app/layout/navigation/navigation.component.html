@@ -64,27 +64,20 @@
         <a routerLink="/workouts/home"
           (click)="setSelectedOption(1)"
           [class.selectedOption]="selectedOption === 1"
-           mat-list-item>Workout Center</a>
+           mat-list-item>Workout Center
+        </a>
 
         <ul>
 
           <li>
-            <mat-expansion-panel class="sub-menu-expansion-panel" hideToggle="true">
-              <mat-expansion-panel-header collapsedHeight="'auto'"
-                                          expandedHeight="'auto'">
-                <mat-panel-title>
-                  Current
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-action-row *ngFor="let day of dayNumber">
-                <a class="sub-menu-item"
-                  (click)="setSelectedOption(1000 + day)"
-                  [class.selectedOption]="selectedOption === (1000 + day)"
-                  [routerLink]="'/workouts/current_workout/' + day">
-                  Day {{day}}
-                </a>
-              </mat-action-row>
-            </mat-expansion-panel>
+
+            <a class="workout-menu-item"
+              (click)="setSelectedOption(2)"
+              [class.selectedOption]="selectedOption === (2)"
+              [routerLink]="'/workouts/current_workout'">
+              Current Workout
+            </a>
+
           </li>
 
           <li>
@@ -114,18 +107,21 @@
         <a routerLink="/results"
           (click)="setSelectedOption(5)"
           [class.selectedOption]="selectedOption === 5"
-           mat-list-item>Results Center</a>
+           mat-list-item>Results Center
+        </a>
 
         <ul>
           <li>
             <a routerLink="/results/goals"
               (click)="setSelectedOption(6)"
-              [class.selectedOption]="selectedOption === 6">Goals</a>
+              [class.selectedOption]="selectedOption === 6">Goals
+            </a>
           </li>
           <li>
             <a routerLink="/results/progression"
               (click)="setSelectedOption(7)"
-              [class.selectedOption]="selectedOption === 7">Progression</a>
+              [class.selectedOption]="selectedOption === 7">Progression
+            </a>
           </li>
         </ul>
 
@@ -133,7 +129,8 @@
 
         <a mat-list-item routerLink="/admin/home"
           (click)="setSelectedOption(8)"
-          [class.selectedOption]="selectedOption === 8">Admin</a>
+          [class.selectedOption]="selectedOption === 8">Admin
+        </a>
         <ul>
           <li>
             <mat-expansion-panel class="sub-menu-expansion-panel" hideToggle="true">
@@ -175,7 +172,8 @@
                   (click)="setSelectedOption(12)"
                   [class.selectedOption]="selectedOption === 12"
                   class="sub-menu-item"
-                  routerLink="/admin/exercise"> Overview </a>
+                  routerLink="/admin/exercise">Overview
+                </a>
               </mat-action-row>
 
               <mat-action-row>
@@ -183,7 +181,8 @@
                   (click)="setSelectedOption(13)"
                   [class.selectedOption]="selectedOption === 13"
                   class="sub-menu-item"
-                  routerLink="/admin/add-exercise"> Add Exercise </a>
+                  routerLink="/admin/add-exercise">Add Exercise
+                </a>
               </mat-action-row>
 
               <mat-action-row>
@@ -206,7 +205,8 @@
                   (click)="setSelectedOption(15)"
                   [class.selectedOption]="selectedOption === 15"
                   class="sub-menu-item"
-                  routerLink="/admin/muscle"> Overview </a>
+                  routerLink="/admin/muscle">Overview
+                </a>
               </mat-action-row>
 
               <mat-action-row>
@@ -214,7 +214,8 @@
                   (click)="setSelectedOption(16)"
                   [class.selectedOption]="selectedOption === 16"
                   class="sub-menu-item"
-                  routerLink="/admin/add-muscle"> Add Muscle </a>
+                  routerLink="/admin/add-muscle">Add Muscle
+                </a>
               </mat-action-row>
             </mat-expansion-panel>
           </li>

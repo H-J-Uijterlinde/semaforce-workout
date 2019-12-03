@@ -151,6 +151,7 @@ li {
   text-align: center;
   background-color: #1b3039;
   box-shadow: 0 -2px 2px black;
+  z-index: 2;
 }
 
 .footer-content {

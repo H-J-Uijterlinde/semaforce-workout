@@ -1,49 +1,57 @@
 <div class="upper">
-    <div class="admin-exercise-overview-container">
+  <div class="admin-exercise-overview-container">
 
-      <div class="hold-filter-container">
-        <app-filter-exercises (exercisesEvent)="setExercises($event)"></app-filter-exercises>
-      </div>
-
-      <div class="admin-show-exercises-container">
-        <table mat-table
-               [dataSource]="exercises">
-
-          <ng-container matColumnDef="Name">
-            <th *matHeaderCellDef> Name</th>
-            <td *matCellDef="let exerciseView"> {{exerciseView.name}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="Category">
-            <th *matHeaderCellDef> Category</th>
-            <td
-              class="category"
-              *matCellDef="let exerciseView"> {{exerciseView.category}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="Muscle Group">
-            <th *matHeaderCellDef> Muscle Group</th>
-            <td *matCellDef="let exerciseView"> {{exerciseView.muscleGroup || 'N/A' }}</td>
-          </ng-container>
-
-          <ng-container
-            matColumnDef="delete">
-            <th
-              *matHeaderCellDef></th>
-            <td
-              *matCellDef="let exerciseView">
-              <button mat-raised-button
-                      (click)="editExercise(exerciseView)">
-                Edit
-              </button>
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-        </table>
-      </div>
-
+    <div class="hold-filter-container"
+         [class.hide]="!displayFilter && (isMobile$ | async)">
+      <button mat-stroked-button
+              *ngIf="(isMobile$ | async)"
+              (click)="showFilter()">Results</button>
+      <app-filter-exercises (exercisesEvent)="setExercises($event)"></app-filter-exercises>
     </div>
+
+    <div class="admin-show-exercises-container"
+         [class.hide]="displayFilter && (isMobile$ | async)">
+      <button mat-stroked-button
+              *ngIf="(isMobile$ | async)"
+              (click)="showFilter()">Filter</button>
+      <table mat-table
+             [dataSource]="exercises">
+
+        <ng-container matColumnDef="Name">
+          <th *matHeaderCellDef> Name</th>
+          <td *matCellDef="let exerciseView"> {{exerciseView.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Category">
+          <th *matHeaderCellDef> Category</th>
+          <td
+            class="category"
+            *matCellDef="let exerciseView"> {{exerciseView.category}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Muscle Group">
+          <th *matHeaderCellDef> Muscle Group</th>
+          <td *matCellDef="let exerciseView"> {{exerciseView.muscleGroup || 'N/A' }}</td>
+        </ng-container>
+
+        <ng-container
+          matColumnDef="delete">
+          <th
+            *matHeaderCellDef></th>
+          <td
+            *matCellDef="let exerciseView">
+            <button mat-raised-button
+                    (click)="editExercise(exerciseView)">
+              Edit
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </div>
+
+  </div>
 </div>

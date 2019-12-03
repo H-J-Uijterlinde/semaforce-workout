@@ -4,6 +4,11 @@ import {WorkoutView} from '../../../../model/workout/WorkoutView';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {TrainingDayView} from '../../../../model/workout/TrainingDayView';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ResultService} from '../../../../service/results/result.service';
+import {WeeklyResult} from '../../../../model/workout/WeeklyResult';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-current-workout-home',
@@ -12,18 +17,30 @@ import {Observable} from 'rxjs';
 })
 export class CurrentWorkoutHomeComponent implements OnInit {
 
-  workout: WorkoutView;
+  workoutForView: WorkoutView;
+  allTrainingDays: TrainingDayView[];
   isWeb$: Observable<boolean>;
   showCondensed = false;
 
   constructor(private authenticatedUser: AuthenticatedUserService,
-              private breakPointObserver: BreakpointObserver) {
-    this.workout = authenticatedUser.user.currentWorkout;
+              private breakPointObserver: BreakpointObserver,
+              private activatedRoute: ActivatedRoute,
+              private resultsService: ResultService,
+              private snackBar: MatSnackBar,
+              private router: Router) {
+
+    this.workoutForView = authenticatedUser.user.currentWorkout;
 
     this.isWeb$ = this.breakPointObserver.observe(Breakpoints.Web)
       .pipe(
         map(result => result.matches)
       );
+
+    this.activatedRoute.data.subscribe(
+      data => {
+        this.allTrainingDays = data.trainingDays;
+      }
+    );
   }
 
   ngOnInit() {
@@ -36,4 +53,12 @@ export class CurrentWorkoutHomeComponent implements OnInit {
     );
   }
 
+  AddResults(trainingDayId: bigint, results: WeeklyResult[]) {
+    this.resultsService.addResult(trainingDayId, results).subscribe(
+      response => {
+        this.router.navigateByUrl('/home');
+        this.snackBar.open('Results saved!', null, {duration: 3000});
+      }
+    );
+  }
 }

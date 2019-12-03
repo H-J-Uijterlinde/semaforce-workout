@@ -1,15 +1,18 @@
 <div class="select-exercises-dialog">
 
-  <div class="hold-filter-container">
+  <div class="hold-filter-container"
+       [class.hide]="!displayFilter">
+    <button class="hide-show-filter buttons" mat-stroked-button (click)="showFilter()">Show Results</button>
     <app-filter-exercises
       (exercisesEvent)="setExercises($event)">
     </app-filter-exercises>
   </div>
 
 
-  <div class="exercise-list-container">
-    <h2 mat-dialog-title>Select Exercise</h2>
+  <div class="exercise-list-container"[class.hide]="displayFilter">
 
+    <h2 mat-dialog-title>Select Exercise</h2>
+    <button mat-stroked-button (click)="showFilter()">Filter</button>
     <mat-dialog-content class="mat-typography">
       <mat-selection-list
         *ngIf="data.multi"

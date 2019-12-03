@@ -6,6 +6,7 @@ import {environment} from '../../../environments/environment';
 import {ChartRequest} from '../../model/results/chart-request';
 import {ChartData} from '../../model/results/chart-data';
 import {Observable} from 'rxjs';
+import {InstantTrainingWrapper} from '../../model/workout/InstantTrainingWrapper';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,11 @@ export class ResultService {
 
     return this.http.
     post<TrainingDayView>(this.url + '/api/training_days/' + trainingDayId + '/add_results', results);
+  }
+
+  addInstantTrainingResults(wrapperDto: InstantTrainingWrapper) {
+
+    return this.http.post(this.url + '/api/training_days/instant_training', wrapperDto);
   }
 
   getResultsForGraph(requestData: ChartRequest): Observable<ChartData> {

@@ -1,7 +1,7 @@
 .create-workout-cards {
   margin: 10% auto;
   width: 75%;
-  max-width: 400px;
+  max-width: fit-content;
   text-align: center;
   background-color: rgba(255, 242, 223, 0.95);
 }

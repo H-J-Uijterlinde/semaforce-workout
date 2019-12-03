@@ -14,11 +14,10 @@ import {WorkoutView} from '../../model/workout/WorkoutView';
   templateUrl: './show-current-workout.component.html',
   styleUrls: ['./show-current-workout.component.css']
 })
-export class ShowCurrentWorkoutComponent implements OnInit, OnDestroy {
+export class ShowCurrentWorkoutComponent implements OnInit {
 
-  navigationSubscription;
-  @Input() selectedDayNumber: number;
-  @Input() workout: WorkoutView;
+  @Input()
+  allTrainingDays: TrainingDayView[];
 
   trainingDay: TrainingDayView;
   exercises: ScheduledExercise[] = [];
@@ -28,43 +27,26 @@ export class ShowCurrentWorkoutComponent implements OnInit, OnDestroy {
   currentWeek: number;
 
   constructor(private activeRoute: ActivatedRoute,
-              private router: Router,
+              public router: Router,
               private workoutService: WorkoutService,
               private resultsService: ResultService,
               private snackBar: MatSnackBar) {
-
-    // subscribe to router events to 'refresh' component. Otherwise the component wil not react to url parameter changes
-    this.navigationSubscription = this.router.events.subscribe(
-      e => {
-        if (e instanceof NavigationEnd) {
-          this.selectedDayNumber = this.activeRoute.snapshot.params.dayNumber;
-
-          // Subscribing to router events must happen in the constructor, however the @Input() properties are not yet
-          // available here, therefore the first initialization of the trainingDay happens in the OnInit.
-          if (!this.isFirstInit) {
-            this.setTrainingDay();
-          }
-          this.isFirstInit = false;
-        }
-      }
-    );
   }
 
-  setTrainingDay() {
-    this.workoutService.getTrainingDayByWorkoutId(this.workout.id, this.selectedDayNumber).subscribe(
-      response => {
-        this.resetTrainingDay(response);
-      }
-    );
-
+  ngOnInit() {
+    this.setTrainingDay(1);
   }
 
-  private resetTrainingDay(response) {
+  setTrainingDay(dayNumber: number) {
+    this.resetTrainingDay(this.allTrainingDays[dayNumber - 1]);
+  }
+
+  private resetTrainingDay(response: TrainingDayView) {
     this.trainingDay = response;
     this.currentWeek = this.trainingDay.currentWeek;
     this.exercises = Object.values(this.trainingDay.scheduledExercises);
     this.exercises.forEach((exercise, index) => {
-      exercise.results.weeklyResults[this.currentWeek] = (new WeeklyResult(index + 1, this.currentWeek, [], [], [], null));
+      exercise.results.weeklyResults[this.currentWeek] = (new WeeklyResult(index + 1, this.currentWeek, [], [], [], null, exercise.exercise.id));
     });
   }
 
@@ -76,9 +58,17 @@ export class ShowCurrentWorkoutComponent implements OnInit, OnDestroy {
     return setNumbers;
   }
 
+  getDayNumbers() {
+    const dayNumbers: number[] = [];
+    for (let i = 1; i <= this.allTrainingDays.length; i++) {
+      dayNumbers.push(i);
+    }
+    return dayNumbers;
+  }
+
   getWeekNumbers(multiplier: number): number[] {
     const weeknumber: number[] = [];
-    for (let i = 1; i <= this.workout.numWeeks; i++) {
+    for (let i = 1; i <= this.trainingDay.currentWeek; i++) {
       for (let j = 1; j <= multiplier; j++) {
         weeknumber.push(j);
       }
@@ -127,17 +117,5 @@ export class ShowCurrentWorkoutComponent implements OnInit, OnDestroy {
     } else {
       this.snackBar.open('You did not fill in all the fields.', null, {duration: 3000});
     }
-
   }
-
-  ngOnInit() {
-    this.setTrainingDay();
-  }
-
-  ngOnDestroy(): void {
-    if (this.navigationSubscription) {
-      this.navigationSubscription.unsubscribe();
-    }
-  }
-
 }

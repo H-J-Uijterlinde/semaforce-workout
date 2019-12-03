@@ -1,18 +1,25 @@
 .upper {
   float: left;
-  margin-left: 75px;
   padding: 10px;
-  min-width: 500px;
-  max-width: 750px;
+  width: 90%;
+  max-width: fit-content;
   max-height: 75% !important;
   overflow-y: hidden;
   top: 40%;
+}
+
+.hold-filter-container {
+  width: fit-content;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .admin-exercise-overview-container {
   display: flex;
   flex-direction: row;
   overflow: hidden !important;
+  width: fit-content;
 }
 
 .admin-show-exercises-container {
@@ -21,6 +28,10 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto !important;
+}
+
+.hide {
+  display: none;
 }
 
 table {
