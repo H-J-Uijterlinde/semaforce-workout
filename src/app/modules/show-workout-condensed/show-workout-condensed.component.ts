@@ -41,7 +41,7 @@ export class ShowWorkoutCondensedComponent implements OnInit {
   constructor(private workoutService: WorkoutService,
               private resultsService: ResultService,
               private snackBar: MatSnackBar,
-              private authenticatedUser: AuthenticatedUserService,
+              public authenticatedUser: AuthenticatedUserService,
               private dialog: MatDialog) {
 
 
