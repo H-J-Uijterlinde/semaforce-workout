@@ -2,7 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {WorkoutService} from '../../service/workout/workout.service';
 import {TrainingDayView} from '../../model/workout/TrainingDayView';
 import {ScheduledExercise} from '../../model/workout/ScheduledExercise';
-import {WeeklyResult} from '../../model/workout/WeeklyResult';
+import {WeeklyResult} from '../../model/results/WeeklyResult';
 import {ResultService} from '../../service/results/result.service';
 import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';

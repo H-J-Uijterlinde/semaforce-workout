@@ -9,9 +9,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 16px;
-  background-color: whitesmoke;
-  background-image: url("~assets/login-back.jpg") !important;
-
+  background-color: white;
 }
 
 /*the .container and .upper are two div classes, which when used together,
@@ -34,14 +32,13 @@ body {
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
-  border: 1px outset black;
-  box-shadow: 3px 3px 3px #1c1a1a;
+  box-shadow: 1px 1px 1px #1c1a1a;
   border-radius: 5px;
   width: 75%;
   max-height: 600px;
   margin-top: 15px;
   margin-bottom: 15px;
-  background-color: rgba(245, 245, 245, 0.9);
+  background-color: #fff8e1;
 }
 
 .home-screen-cards {
@@ -49,11 +46,11 @@ body {
   width: 75%;
   max-width: 400px;
   text-align: center;
-  background-color: rgba(255, 242, 223, 0.95);
+  background-color: #fff8e1;
 }
 
 .bg-gray {
-  background-color: rgba(231, 225, 240, 0.76);
+  background-color: #ffecb3;
 }
 
 .mat-dialog-container {
@@ -61,6 +58,44 @@ body {
   text-align: center;
   max-height: 90%;
   overflow-y: auto;
+}
+
+mat-grid-list {
+  margin: 25px auto;
+  width: 95%;
+  max-width: 1350px;
+}
+
+mat-grid-tile {
+  color: black;
+  box-shadow: 1px 1px 5px black;
+  border-radius: 15px;
+}
+
+.home-screen-tile-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  width: 100%;
+}
+
+.home-screen-tile-content-container {
+  text-align: left;
+}
+
+p {
+  font-size: 18px;
+  margin: 5px;
+}
+
+h3 {
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  margin: 5px;
 }
 
 

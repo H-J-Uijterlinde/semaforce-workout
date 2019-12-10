@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TrainingDayView} from '../../../../model/workout/TrainingDayView';
 import {ScheduledExercise} from '../../../../model/workout/ScheduledExercise';
-import {WeeklyResult} from '../../../../model/workout/WeeklyResult';
+import {WeeklyResult} from '../../../../model/results/WeeklyResult';
 import {AuthenticatedUserService} from '../../../../service/authentication-service/authenticated-user.service';
 import {InstantTrainingWrapper} from '../../../../model/workout/InstantTrainingWrapper';
 import {TrainingDay} from '../../../../model/workout/TrainingDay';

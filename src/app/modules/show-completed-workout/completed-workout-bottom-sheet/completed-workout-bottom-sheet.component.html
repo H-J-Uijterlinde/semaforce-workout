@@ -1,0 +1,7 @@
+<div *ngIf="trainingDays; else spinner">
+  <app-show-completed-workout [allTrainingDays]="trainingDays"></app-show-completed-workout>
+</div>
+
+<ng-template #spinner>
+  <mat-progress-spinner diameter="25" mode="indeterminate"></mat-progress-spinner>
+</ng-template>

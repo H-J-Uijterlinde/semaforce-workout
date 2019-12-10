@@ -1,16 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TrainingDayView} from '../../model/workout/TrainingDayView';
-import {WorkoutService} from '../../service/workout/workout.service';
 import {ScheduledExercise} from '../../model/workout/ScheduledExercise';
-import {WeeklyResult} from '../../model/workout/WeeklyResult';
+import {WeeklyResult} from '../../model/results/WeeklyResult';
 import {NgForm} from '@angular/forms';
-import {ResultService} from '../../service/results/result.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {AuthenticatedUserService} from '../../service/authentication-service/authenticated-user.service';
 import {ExerciseConfiguration} from '../../model/workout/ExerciseConfiguration';
 import {SelectExerciseDialogComponent} from '../select-exercise-dialog/select-exercise-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
-import {Result} from '../../model/workout/Result';
+import {Result} from '../../model/results/Result';
 import {MatExpansionPanel} from '@angular/material/expansion';
 
 @Component({
@@ -38,13 +36,9 @@ export class ShowWorkoutCondensedComponent implements OnInit {
   newExercise: ScheduledExercise = new ScheduledExercise(null,
     new ExerciseConfiguration(null, null, null, null), null);
 
-  constructor(private workoutService: WorkoutService,
-              private resultsService: ResultService,
-              private snackBar: MatSnackBar,
+  constructor(private snackBar: MatSnackBar,
               public authenticatedUser: AuthenticatedUserService,
               private dialog: MatDialog) {
-
-
   }
 
   ngOnInit() {

@@ -5,7 +5,7 @@
 .mat-expansion-panel {
   margin-top: 6px !important;
   margin-bottom: 3px !important;
-  background-color: rgba(255, 251, 245, 0.85);
+  background-color: rgba(255, 248, 225, 0.9);
 }
 
 .mat-expansion-panel-header {
@@ -31,7 +31,6 @@
   overflow-x: auto !important;
   overflow-y: hidden !important;
   background-color: inherit;
-
 }
 
 button {
@@ -90,14 +89,14 @@ input {
   width: 75px;
   left: 0;
   top: auto;
-  background-color: #fffbf5;
+  background-color: rgba(255, 248, 225, 0.9);
 }
 
 .sticky-rest-number {
   position: sticky;
   left: 60px;
   top: auto;
-  background-color: #fffbf5;
+  background-color: rgba(255, 248, 225, 0.9);
 }
 
 .coming-week {

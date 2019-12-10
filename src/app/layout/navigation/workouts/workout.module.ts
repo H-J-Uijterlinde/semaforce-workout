@@ -15,6 +15,8 @@ import {CurrentWorkoutHomeComponent} from './current-workout/current-workout-hom
 import {ShowWorkoutCondensedModule} from '../../../modules/show-workout-condensed/show-workout-condensed.module';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { InstantWorkoutComponent } from './instant-workout/instant-workout.component';
+import {ShowCompletedWorkoutModule} from '../../../modules/show-completed-workout/show-completed-workout.module';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { InstantWorkoutComponent } from './instant-workout/instant-workout.compo
     ShowWorkoutModule,
     SelectExerciseDialogModule,
     ShowWorkoutCondensedModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ShowCompletedWorkoutModule
   ]})
 export class WorkoutModule {
 }

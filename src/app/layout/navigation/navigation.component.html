@@ -1,42 +1,23 @@
 <mat-toolbar color="primary-dark">
   <mat-toolbar-row class="upper-row">
-    <a
-      *ngIf="authenticationService.isUserLoggedIn()"
-      routerLink="/home">
-      <mat-icon>house</mat-icon>
+    <button mat-button class="menu-button"
+      (click)="sidenav.toggle()">
+      <mat-icon class="menu-icon">menu</mat-icon>
+    </button>
+    <a routerLink="/home"
+    class="header-logo">
+      Semaforce
     </a>
 
-
-    <span class="logo">
-      <a href="https://nl.wikipedia.org/wiki/Dommel_(stripfiguur)">
-        Semaforce
-      </a>
-    </span>
+    <span class="logo"></span>
 
     <mat-spinner
       diameter="35"
       color="'white'"
       *ngIf="displaySpinnerService.displaySpinner"></mat-spinner>
-
-  </mat-toolbar-row>
-
-  <mat-toolbar-row
-    *ngIf="authenticationService.isUserLoggedIn()"
-    class="second-row">
-
-    <button mat-button
-      *ngIf="authenticationService.isUserLoggedIn()"
-      (click)="sidenav.toggle()">
-      <mat-icon class="menu-icon">menu</mat-icon>
-      Menu
-    </button>
-
-    <span class="spacer"></span>
-
     <a class="header-item" routerLink="/logout">
       Log Out
     </a>
-
   </mat-toolbar-row>
 
 </mat-toolbar>
@@ -44,10 +25,10 @@
 <mat-sidenav-container class="side-nav-container">
   <mat-sidenav #sidenav
     class="side-nav"
-    [opened]="(isWeb$ | async) && authenticationService.isUserLoggedIn()"
+    [opened]="(isWeb$ | async)"
     [mode]="!(isWeb$ | async) ? 'over' : 'side'"
     [fixedInViewport]="true"
-    [fixedTopGap]="(isWeb$ | async) ? 105 : 0"
+    [fixedTopGap]="(isWeb$ | async) ? 70 : 0"
     [fixedBottomGap]="(isWeb$ | async) ? 55: 0"
     [class.small-screen-sidenav]="(isWeb$ | async)">
 
@@ -62,8 +43,8 @@
     <mat-nav-list>
       <mat-accordion>
         <a routerLink="/workouts/home"
-          (click)="setSelectedOption(1)"
-          [class.selectedOption]="selectedOption === 1"
+          routerLinkActive="selectedOption"
+          [routerLinkActiveOptions]="{exact: true}"
            mat-list-item>Workout Center
         </a>
 
@@ -72,8 +53,8 @@
           <li>
 
             <a class="workout-menu-item"
-              (click)="setSelectedOption(2)"
-              [class.selectedOption]="selectedOption === (2)"
+               routerLinkActive="selectedOption"
+              [routerLinkActiveOptions]="{exact: true}"
               [routerLink]="'/workouts/current_workout'">
               Current Workout
             </a>
@@ -81,9 +62,20 @@
           </li>
 
           <li>
+
+            <a class="workout-menu-item"
+               routerLinkActive="selectedOption"
+              [routerLinkActiveOptions]="{exact: true}"
+              [routerLink]="'/workouts/instant_workout'">
+              Instant Training
+            </a>
+
+          </li>
+
+          <li>
             <a
-              (click)="setSelectedOption(3)"
-              [class.selectedOption]="selectedOption === 3"
+              routerLinkActive="selectedOption"
+              [routerLinkActiveOptions]="{exact: true}"
               class="workout-menu-item"
               routerLink="/workouts/create_workout">
               Create new
@@ -92,8 +84,7 @@
 
           <li>
             <a
-              (click)="setSelectedOption(4)"
-              [class.selectedOption]="selectedOption === 4"
+              routerLinkActive="selectedOption"
               class="workout-menu-item"
               routerLink="/workouts/previous_workouts">
               Previous
@@ -105,22 +96,24 @@
         <mat-divider></mat-divider>
 
         <a routerLink="/results"
-          (click)="setSelectedOption(5)"
-          [class.selectedOption]="selectedOption === 5"
+           routerLinkActive="selectedOption"
+          [routerLinkActiveOptions]="{exact: true}"
            mat-list-item>Results Center
         </a>
 
         <ul>
           <li>
             <a routerLink="/results/goals"
-              (click)="setSelectedOption(6)"
-              [class.selectedOption]="selectedOption === 6">Goals
+               routerLinkActive="selectedOption"
+              [routerLinkActiveOptions]="{exact: true}">
+              Goals
             </a>
           </li>
           <li>
             <a routerLink="/results/progression"
-              (click)="setSelectedOption(7)"
-              [class.selectedOption]="selectedOption === 7">Progression
+               routerLinkActive="selectedOption"
+              [routerLinkActiveOptions]="{exact: true}">
+              Progression
             </a>
           </li>
         </ul>
@@ -128,8 +121,9 @@
         <mat-divider></mat-divider>
 
         <a mat-list-item routerLink="/admin/home"
-          (click)="setSelectedOption(8)"
-          [class.selectedOption]="selectedOption === 8">Admin
+           routerLinkActive="selectedOption"
+          [routerLinkActiveOptions]="{exact: true}">
+          Admin
         </a>
         <ul>
           <li>
@@ -143,8 +137,8 @@
 
               <mat-action-row>
                 <a
-                  (click)="setSelectedOption(10)"
-                  [class.selectedOption]="selectedOption === 10"
+                  routerLinkActive="selectedOption"
+                  [routerLinkActiveOptions]="{exact: true}"
                   class="sub-menu-item"
                   routerLink="/admin/users">
                   Overview
@@ -169,8 +163,8 @@
 
               <mat-action-row>
                 <a
-                  (click)="setSelectedOption(12)"
-                  [class.selectedOption]="selectedOption === 12"
+                  routerLinkActive="selectedOption"
+                  [routerLinkActiveOptions]="{exact: true}"
                   class="sub-menu-item"
                   routerLink="/admin/exercise">Overview
                 </a>
@@ -178,8 +172,8 @@
 
               <mat-action-row>
                 <a
-                  (click)="setSelectedOption(13)"
-                  [class.selectedOption]="selectedOption === 13"
+                  routerLinkActive="selectedOption"
+                  [routerLinkActiveOptions]="{exact: true}"
                   class="sub-menu-item"
                   routerLink="/admin/add-exercise">Add Exercise
                 </a>
@@ -202,8 +196,8 @@
 
               <mat-action-row>
                 <a
-                  (click)="setSelectedOption(15)"
-                  [class.selectedOption]="selectedOption === 15"
+                  routerLinkActive="selectedOption"
+                  [routerLinkActiveOptions]="{exact: true}"
                   class="sub-menu-item"
                   routerLink="/admin/muscle">Overview
                 </a>
@@ -211,8 +205,8 @@
 
               <mat-action-row>
                 <a
-                  (click)="setSelectedOption(16)"
-                  [class.selectedOption]="selectedOption === 16"
+                  routerLinkActive="selectedOption"
+                  [routerLinkActiveOptions]="{exact: true}"
                   class="sub-menu-item"
                   routerLink="/admin/add-muscle">Add Muscle
                 </a>

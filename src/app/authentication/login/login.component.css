@@ -4,7 +4,6 @@
 }
 
 .upper {
-  background-color: rgba(255, 242, 223, 0.96);
   max-width: 375px;
 }
 
@@ -15,7 +14,7 @@
 }
 
 mat-toolbar {
-  background-color: #1b3039;
+  background-color: #37474f;
 }
 
 mat-icon {
@@ -54,7 +53,7 @@ mat-icon {
   height: 3rem;
   width: 100%;
   text-align: center;
-  background-color: #1b3039;
+  background-color: #37474f;
   box-shadow: 0 -2px 2px black;
 }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {WeeklyResult} from '../../model/workout/WeeklyResult';
+import {WeeklyResult} from '../../model/results/WeeklyResult';
 import {TrainingDayView} from '../../model/workout/TrainingDayView';
 import {environment} from '../../../environments/environment';
 import {ChartRequest} from '../../model/results/chart-request';

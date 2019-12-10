@@ -1,0 +1,29 @@
+<mat-grid-list [cols]="(isWeb$ | async) ? 2 : 1"
+  [rowHeight]="'1:1'"
+  [gutterSize]="(isWeb$ | async) ? '100px' : '25px'">
+
+  <mat-grid-tile (click)="router.navigateByUrl('/workouts/previous_workouts/complete')">
+    <div class="home-screen-tile-container">
+      <div class="home-sceen-tile-image-container">
+        <img src="../../../../../assets/create-new.jpg">
+      </div>
+      <div class="home-screen-tile-content-container">
+        <h3>Complete Workouts</h3>
+        <p>Click here to see the full workout routines you previously created</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile (click)="router.navigateByUrl('/workouts/previous_workouts/instant')">
+    <div class="home-screen-tile-container">
+      <div class="home-sceen-tile-image-container">
+        <img src="../../../../../assets/weight-stack.jpg">
+      </div>
+      <div class="home-screen-tile-content-container">
+        <h3>Instant Training</h3>
+        <p>Click here to see your previous instant training workouts</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+</mat-grid-list>

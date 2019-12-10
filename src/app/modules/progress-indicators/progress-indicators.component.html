@@ -11,6 +11,15 @@
   </button>
 </div>
 
+<mat-card class="add-goal-card" (click)="router.navigateByUrl('/results/add_goals')">
+  <mat-card-title>
+    Set New Goals!
+  </mat-card-title>
+  <mat-card-subtitle class="add-goal-subtitle">
+    Click here to create new goals
+  </mat-card-subtitle>
+</mat-card>
+
 <mat-card *ngFor="let goal of goals let index=index">
   <mat-card-title>{{goal.title}}</mat-card-title>
   <mat-card-subtitle>{{goal.subTitle}}</mat-card-subtitle>
@@ -34,13 +43,5 @@
 
   </mat-card-content>
 
+</mat-card>
 
-</mat-card>
-<mat-card (click)="router.navigateByUrl('/results/add_goals')">
-  <mat-card-title>
-    Set New Goals!
-  </mat-card-title>
-  <mat-card-subtitle>
-    Click here to create new goals
-  </mat-card-subtitle>
-</mat-card>

@@ -15,9 +15,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {DeviceDetectorModule} from 'ngx-device-detector';
 import {NavigationComponent} from './layout/navigation/navigation.component';
 import {HomeComponent} from './layout/home/home.component';
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {ShowWorkoutCondensedModule} from "./modules/show-workout-condensed/show-workout-condensed.module";
-import {MatGridListModule} from "@angular/material/grid-list";
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatTabsModule,
     DeviceDetectorModule.forRoot(),
     MatSidenavModule,
-    ShowWorkoutCondensedModule,
     MatGridListModule
   ],
   providers: [

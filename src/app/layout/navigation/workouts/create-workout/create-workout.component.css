@@ -1,9 +1,13 @@
 .create-workout-cards {
   margin: 10% auto;
-  width: 75%;
+  width: 90%;
   max-width: fit-content;
   text-align: center;
-  background-color: rgba(255, 242, 223, 0.95);
+  background-color: rgba(255, 248, 225, 0.9);
+}
+
+mat-vertical-stepper {
+  background-color: rgba(255, 248, 225, 0.9);
 }
 
 .workout-configuration-form {
@@ -16,9 +20,6 @@
   margin-top: 25px;
 }
 
-mat-vertical-stepper {
-  background-color: rgba(245, 245, 245, 0);
-}
 
 .select-exercises-container {
   margin-top: 15px;
@@ -49,18 +50,12 @@ mat-vertical-stepper {
 .accordion-holder {
   display: inline-flex;
   flex-direction: column;
-  padding: 15px;
-  border: 2px inset #512da8;
-  box-shadow: inset 3px 3px 3px #000000;
-  border-radius: 20px;
-  background-color: white;
 }
 
 mat-expansion-panel {
-  background-color: white;
-  border: none !important;
-  box-shadow: none !important;
   text-align: left;
+  box-shadow: none !important;
+  background-color: rgba(255, 248, 225, 0.9);
 }
 
 ::ng-deep.mat-tab-label, .mat-ripple, .ng-star-inserted, .mat-tab-label-active {

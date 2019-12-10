@@ -1,0 +1,16 @@
+<mat-accordion>
+  <mat-card *ngFor="let workoutView of allWorkoutsForUser | async">
+    <mat-card-title>{{workoutView.referenceName}}</mat-card-title>
+    <mat-card-subtitle>{{workoutView.daysPerWeek > 1 ? workoutView.daysPerWeek + ' days' : workoutView.daysPerWeek + ' day'}}
+      per week
+    </mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-button (click)="openCompletedWorkoutDialog(workoutView)">See exercises</button>
+    </mat-card-actions>
+  </mat-card>
+</mat-accordion>
+
+
+<ng-template #spinner matExpansionPanelContent>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

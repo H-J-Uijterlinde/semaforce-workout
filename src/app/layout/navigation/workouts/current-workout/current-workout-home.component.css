@@ -9,23 +9,16 @@
 }
 
 .condensed-workout-holder{
-  max-width: 750px;
+  max-width: 1250px;
   width: 97%;
   margin: 15px auto;
 }
 
 mat-checkbox {
+  margin: 10px 0 0 75%;
   color: black;
   font-size: 16px;
   background-color: rgba(245, 245, 245, 0.45);
   width: fit-content;
   padding: 0 5px;
-}
-
-.checkbox-condensed-false {
-  margin: 15px 25% 0 75%;
-}
-
-.checkbox-condensed {
-  margin: 15px 37% 0 63%;
 }

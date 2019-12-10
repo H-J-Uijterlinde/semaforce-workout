@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {UserView} from '../../model/user/UserView';
 import {WorkoutView} from '../../model/workout/WorkoutView';
 import {Observable} from 'rxjs';
-import {AuthenticationService} from "../../service/authentication-service/authentication.service";
-import {DisplaySpinnerService} from "../../service/navigation/display-spinner.service";
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {map} from "rxjs/operators";
+import {AuthenticationService} from '../../service/authentication-service/authentication.service';
+import {DisplaySpinnerService} from '../../service/navigation/display-spinner.service';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-navigation',
@@ -17,7 +17,6 @@ export class NavigationComponent implements OnInit {
   currentUser: UserView;
   currentWorkout: WorkoutView;
   dayNumber: number[] = [];
-  selectedOption: number;
   isWeb$: Observable<boolean>;
 
   constructor(public authenticationService: AuthenticationService,
@@ -43,9 +42,5 @@ export class NavigationComponent implements OnInit {
     for (let i = 1; i <= this.currentWorkout.daysPerWeek; i++) {
       this.dayNumber[i - 1] = i;
     }
-  }
-
-  setSelectedOption(option: number) {
-    this.selectedOption = option;
   }
 }

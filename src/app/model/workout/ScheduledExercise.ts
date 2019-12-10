@@ -1,6 +1,6 @@
 import {ExerciseView} from '../exercise/ExerciseView';
 import {ExerciseConfiguration} from './ExerciseConfiguration';
-import {Result} from "./Result";
+import {Result} from "../results/Result";
 
 export class ScheduledExercise {
 

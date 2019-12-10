@@ -1,5 +1,5 @@
 import {TrainingDay} from './TrainingDay';
-import {WeeklyResult} from './WeeklyResult';
+import {WeeklyResult} from '../results/WeeklyResult';
 
 export class InstantTrainingWrapper {
 

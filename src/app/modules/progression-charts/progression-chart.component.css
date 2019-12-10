@@ -4,13 +4,12 @@ mat-card {
   text-align: center;
   margin: 10px auto;
   width: 90%;
+  box-shadow: none !important;
 }
 
 .chart-selection-card {
   max-width: 750px;
-  background-color: rgba(245, 245, 245, 0.95);
   padding: 0;
-
 }
 
 .chart-selection-card-content {
@@ -20,7 +19,8 @@ mat-card {
 }
 
 img {
-  width: 100%;
+  margin: 0 auto;
+  width: 75%;
 }
 
 mat-form-field {

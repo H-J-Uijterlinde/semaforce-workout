@@ -1,4 +1,4 @@
-import {ScheduledExercise} from "./ScheduledExercise";
+import {ScheduledExercise} from './ScheduledExercise';
 
 export class TrainingDayView {
 

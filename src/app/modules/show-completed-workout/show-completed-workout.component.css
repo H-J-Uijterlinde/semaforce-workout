@@ -1,0 +1,66 @@
+.mat-expansion-panel {
+  margin-top: 6px !important;
+  margin-bottom: 3px !important;
+}
+
+.mat-expansion-panel-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.mat-expansion-panel-header-description {
+  text-align: right;
+  display: inline-block;
+}
+
+.mat-expansion-panel-header-title {
+  vertical-align: center;
+  color: black;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+::ng-deep.mat-expansion-panel-content {
+  padding: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  background-color: inherit;
+}
+
+table {
+  border-spacing: 0;
+}
+
+th, td {
+  padding: 4px;
+  min-width: 52px;
+  max-width: 75px;
+}
+
+.rest {
+  border-right: 2px solid rgba(167, 194, 205, 0.3)
+}
+
+thead {
+  border-bottom: 2px solid #445963;
+}
+
+.last-set {
+  border-bottom: none;
+}
+
+.sticky-set-number {
+  position: sticky;
+  width: 75px;
+  left: 0;
+  top: auto;
+  background-color: white;
+}
+
+.sticky-rest-number {
+  position: sticky;
+  left: 60px;
+  top: auto;
+  background-color: white;
+}

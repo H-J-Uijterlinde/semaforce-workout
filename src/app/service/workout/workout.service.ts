@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {WorkoutView} from '../../model/workout/WorkoutView';
 import {TrainingDayView} from '../../model/workout/TrainingDayView';
 import {environment} from '../../../environments/environment';
+import {ScheduledExerciseViewWrapper} from "../../model/workout/ScheduledExerciseViewWrapper";
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,14 @@ export class WorkoutService {
 
   getAllTrainingDaysByWorkoutId(id: bigint): Observable<TrainingDayView[]> {
     return this.http.get<TrainingDayView[]>(this.url + `/api/workouts/${id}/training_days`);
+  }
+
+  getWorkoutViewsByUserId(userId: bigint): Observable<WorkoutView[]> {
+    return this.http.get<WorkoutView[]>(this.url + '/api/workouts/user=' + userId);
+  }
+
+  getTrainingDayViewsByWorkoutId(workoutId: bigint): Observable<ScheduledExerciseViewWrapper[]> {
+    setTimeout(() => {}, 2000);
+    return this.http.get<ScheduledExerciseViewWrapper[]>(this.url + `/api/workouts/${workoutId}/training_day_views`);
   }
 }

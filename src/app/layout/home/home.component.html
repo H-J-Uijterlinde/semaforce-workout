@@ -1,63 +1,68 @@
-<mat-grid-list [cols]="(isWeb$ | async) ? 2 : 1"
-               [rowHeight]="'1:1'"
-               [gutterSize]="(isWeb$ | async) ? '100px' : '25px'">
+<mat-grid-list [cols]="(isWeb$ | async) ? 3 : 1"
+               [rowHeight]="'1:0.66'"
+               [gutterSize]="(isWeb$ | async) ? '50px' : '5px'">
+
+  <mat-grid-tile [colspan]="(isWeb$ | async) ? 3 : 1" [rowspan]="0.75">
+    <div class="home-screen-title-tile">
+      <div class="home-screen-title-tile-content">
+        <h1 class="home-screen-title-tile-header">Welcome to Semaforce</h1>
+        <h3>Let's Workout!</h3>
+      </div>
+    </div>
+  </mat-grid-tile>
 
   <mat-grid-tile (click)="router.navigateByUrl('/workouts/current_workout')">
     <div class="home-screen-tile-container">
-      <div class="home-sceen-tile-image-container">
-        <img src="../../../assets/weight-room.jpg">
+      <div class="home-screen-tile-image-container1">
+        <div class="home-screen-tile-content-container">
+          <h3>Workout</h3>
+          <p>Continue your current workout!</p>
+        </div>
       </div>
-      <div class="home-screen-tile-content-container">
-        <h1>Workout</h1>
-        <p>Continue your current workout!</p>
-      </div>
+
     </div>
   </mat-grid-tile>
 
   <mat-grid-tile (click)="router.navigateByUrl('/workouts/instant_workout')">
     <div class="home-screen-tile-container">
-      <div class="home-sceen-tile-image-container">
-        <img src="../../../assets/weight-stack.jpg">
-      </div>
-      <div class="home-screen-tile-content-container">
-        <h1>Instant Training</h1>
-        <p>Select this option to start training and save your results</p>
+      <div class="home-screen-tile-image-container2">
+        <div class="home-screen-tile-content-container">
+          <h3>Instant Training</h3>
+          <p>Select this option to start training and save your results</p>
+        </div>
       </div>
     </div>
   </mat-grid-tile>
 
   <mat-grid-tile (click)="router.navigateByUrl('/results/progression')">
     <div class="home-screen-tile-container">
-      <div class="home-sceen-tile-image-container">
-        <img src="../../../assets/chart.jpg">
-      </div>
-      <div class="home-screen-tile-content-container">
-        <h1>Progression</h1>
-        <p>Click here to see your progression!</p>
+      <div class="home-screen-tile-image-container3">
+        <div class="home-screen-tile-content-container">
+          <h3>Progression</h3>
+          <p>Click here to see your progression!</p>
+        </div>
       </div>
     </div>
   </mat-grid-tile>
 
   <mat-grid-tile (click)="router.navigateByUrl('results/goals')">
     <div class="home-screen-tile-container">
-      <div class="home-sceen-tile-image-container">
-        <img src="../../../assets/add-goals-pic.jpg">
-      </div>
-      <div class="home-screen-tile-content-container">
-        <h1>Goals</h1>
-        <p>Check the status of your goals or set new ones!</p>
+      <div class="home-screen-tile-image-container4">
+        <div class="home-screen-tile-content-container">
+          <h3>Goals</h3>
+          <p>Check the status of your goals or set new ones!</p>
+        </div>
       </div>
     </div>
   </mat-grid-tile>
 
   <mat-grid-tile (click)="router.navigateByUrl('/workouts/create_workout')">
     <div class="home-screen-tile-container">
-      <div class="home-sceen-tile-image-container">
-        <img src="../../../assets/create-new.jpg">
-      </div>
-      <div class="home-screen-tile-content-container">
-        <h1>New Workout</h1>
-        <p>Design your own workout from scratch!</p>
+      <div class="home-screen-tile-image-container5">
+        <div class="home-screen-tile-content-container">
+          <h3>New Workout</h3>
+          <p>Design your own workout from scratch!</p>
+        </div>
       </div>
     </div>
   </mat-grid-tile>

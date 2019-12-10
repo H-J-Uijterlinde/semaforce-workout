@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 import {TrainingDayView} from '../../../../model/workout/TrainingDayView';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResultService} from '../../../../service/results/result.service';
-import {WeeklyResult} from '../../../../model/workout/WeeklyResult';
+import {WeeklyResult} from '../../../../model/results/WeeklyResult';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({

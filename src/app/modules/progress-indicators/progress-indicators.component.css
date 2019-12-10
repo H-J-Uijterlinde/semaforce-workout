@@ -3,7 +3,7 @@ mat-card {
   width: 90%;
   max-width: 500px;
   text-align: center;
-  background-color: rgba(255, 251, 245, 0.9);
+  background-color: rgba(255, 248, 225, 0.9);
 }
 
 ::ng-deep.mat-progress-bar-buffer {
@@ -19,7 +19,6 @@ mat-card {
   width: 50%;
   font-size: 16px;
   letter-spacing: 0.1em;
-  background-color: rgba(255, 251, 245, 0.9);
   margin: 0 2px;
 }
 
@@ -51,4 +50,13 @@ p {
 
 ::ng-deep.mat-expansion-panel-body {
   padding: 0;
+}
+
+.add-goal-card {
+  background-color: #37474f;
+  color: #fff8e1;
+}
+
+.add-goal-subtitle {
+  color: #fff8e1;
 }

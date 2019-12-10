@@ -1,0 +1,79 @@
+<mat-tab-group (selectedIndexChange)="setTrainingDay($event + 1)"
+               animationDuration="0ms"
+               mat-align-tabs="center">
+
+  <mat-tab *ngFor="let dayNumber of dayNumbers"
+           [label]="'Day ' + dayNumber">
+
+    <ng-template matTabContent>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let scheduledExercise of exercises">
+
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{scheduledExercise.exercise.name}}
+            </mat-panel-title>
+
+            <mat-panel-description>
+              {{scheduledExercise.configuration.numSets}} sets<br>
+              {{scheduledExercise.configuration.minReps}} - {{scheduledExercise.configuration.maxReps}} reps<br>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <table>
+
+              <thead>
+              <tr>
+                <th class="sticky-set-number"></th>
+                <th class="sticky-rest-number"></th>
+                <th
+                  *ngFor="let week of weekNumbers"
+                  colspan="3">Week {{week}}</th>
+                <th></th>
+              </tr>
+              <tr>
+                <th class="sticky-set-number">Set</th>
+                <th class="sticky-rest-number">Rest (s)</th>
+                <th *ngFor="let number of getWeekNumbers(3) let index=index">
+                  {{getTableHeader(number)}}
+                </th>
+                <th></th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr *ngFor="let setNumber of getSetNumbers(scheduledExercise) let lastSet = last">
+                <td class="sticky-set-number"
+                    [class.last-set]="lastSet">{{setNumber}}</td>
+                <td class="sticky-rest-number rest"
+                    [class.last-set]="lastSet">{{scheduledExercise.configuration.restBetweenSets}}</td>
+                <td *ngFor="let columnNumber of getWeekNumbers(3) let index=index"
+                    [class.last-set]="lastSet"
+                    [class.rpe]="columnNumber === 3"
+                    class="results">
+
+                  <div
+                    *ngIf="columnNumber === 1">
+                    {{scheduledExercise.results.weeklyResults[index / 3 + 1]?.numbersLifted[setNumber]?.rpe || '-'}}
+                  </div>
+                  <div
+                    *ngIf="columnNumber === 2">
+                    {{scheduledExercise.results.weeklyResults[(index + 2) / 3]?.numbersLifted[setNumber]?.weightLifted || '-'}}</div>
+                  <div
+                    *ngIf="columnNumber === 3">
+                    {{scheduledExercise.results.weeklyResults[(index + 1) / 3]?.numbersLifted[setNumber]?.repetitionsPerformed || '-'}}
+                  </div>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-template>
+
+  </mat-tab>
+
+</mat-tab-group>

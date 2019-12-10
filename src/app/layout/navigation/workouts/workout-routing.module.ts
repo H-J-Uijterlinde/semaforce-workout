@@ -6,8 +6,7 @@ import {AuthGuardService} from '../../../service/authentication-service/auth-gua
 import {CreateWorkoutComponent} from './create-workout/create-workout.component';
 import {CurrentWorkoutHomeComponent} from './current-workout/current-workout-home.component';
 import {InstantWorkoutComponent} from './instant-workout/instant-workout.component';
-import {AllTrainingDaysResolverService} from "../../../service/resolvers/all-training-days-resolver.service";
-
+import {AllTrainingDaysResolverService} from '../../../service/resolvers/all-training-days-resolver.service';
 
 const routes: Routes = [
   {
@@ -20,7 +19,9 @@ const routes: Routes = [
           trainingDays: AllTrainingDaysResolverService
         }
       },
-      {path: 'instant_workout', component: InstantWorkoutComponent}
+      {path: 'instant_workout', component: InstantWorkoutComponent},
+      {path: 'previous_workouts', loadChildren: './previous-workouts/previous-workouts.module#PreviousWorkoutsModule'},
+
     ], canActivate: [AuthGuardService]
   }
 ];
