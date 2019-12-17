@@ -1,1 +1,6 @@
-<p>previous-instant works!</p>
+<mat-card *ngFor="let trainingDayMiniView of trainingDayMiniViews$ | async">
+  <mat-card-title>Training completed on: {{trainingDayMiniView.createdDate | date}}</mat-card-title>
+  <mat-card-actions>
+    <button (click)="openCompletedWorkoutDialog(trainingDayMiniView.trainingDayId)" mat-button>See exercises</button>
+  </mat-card-actions>
+</mat-card>

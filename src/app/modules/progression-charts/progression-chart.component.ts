@@ -79,7 +79,7 @@ export class ProgressionChartComponent implements OnInit {
 
   selectedExercise: ExerciseView;
   chartRequest: ChartRequest = new ChartRequest(null, null, null);
-  maxSelectableNumReps = 12;
+  maxSelectableNumReps = 24;
   selectableNumReps: number[] = [];
 
   constructor(private dialog: MatDialog,

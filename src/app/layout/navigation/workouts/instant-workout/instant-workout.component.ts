@@ -31,7 +31,8 @@ export class InstantWorkoutComponent implements OnInit {
 
   addInstantTrainingResults(results: WeeklyResult[], exercises: ScheduledExercise[]) {
     exercises.forEach( exercise => exercise.results = null);
-    const wrapperDto = new InstantTrainingWrapper(this.authenticatedUser.user.id, new TrainingDay(1, exercises), results);
+    const wrapperDto = new InstantTrainingWrapper(this.authenticatedUser.user.id,
+      new TrainingDay(this.authenticatedUser.user, 1, exercises), results);
 
     this.resultService.addInstantTrainingResults(wrapperDto).subscribe(
       succes => {

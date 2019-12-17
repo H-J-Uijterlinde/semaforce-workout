@@ -17,10 +17,10 @@ export class ResultService {
 
   constructor(private http: HttpClient) { }
 
-  addResult(trainingDayId: bigint, results: WeeklyResult[]) {
+  addResult(trainingDayId: bigint, userId: bigint, results: WeeklyResult[]) {
 
     return this.http.
-    post<TrainingDayView>(this.url + '/api/training_days/' + trainingDayId + '/add_results', results);
+    post<TrainingDayView>(this.url + '/api/training_days/' + trainingDayId + '/add_results/user=' + userId, results);
   }
 
   addInstantTrainingResults(wrapperDto: InstantTrainingWrapper) {

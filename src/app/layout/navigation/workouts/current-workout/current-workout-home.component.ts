@@ -54,7 +54,7 @@ export class CurrentWorkoutHomeComponent implements OnInit {
   }
 
   AddResults(trainingDayId: bigint, results: WeeklyResult[]) {
-    this.resultsService.addResult(trainingDayId, results).subscribe(
+    this.resultsService.addResult(trainingDayId, this.authenticatedUser.user.id, results).subscribe(
       response => {
         this.router.navigateByUrl('/home');
         this.snackBar.open('Results saved!', null, {duration: 3000});

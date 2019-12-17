@@ -9,12 +9,12 @@
   align-items: center;
   justify-content: center;
   min-width: 200px;
-  background-color: #f5f6f8;
-  border-radius: 0 50px 5px 0;
+  background-color: white;
+  border-radius: 0 15px 5px 0;
 }
 
 .small-screen-sidenav {
-  background-color: #f5f6f8;
+  background-color: white;
 }
 
 .sub-menu-expansion-panel {
@@ -47,7 +47,7 @@ mat-toolbar {
 }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -62,7 +62,7 @@ mat-icon {
 
 .header-item {
   font-size: 75%;
-  color: #ffecb3;
+  color: white;
 }
 
 .logo {
@@ -96,7 +96,7 @@ button {
 }
 
 .menu-button {
-  color: #ffecb3;
+  color: white;
   padding: 0;
 }
 
@@ -113,9 +113,9 @@ button {
 }
 
 .mat-nav-header {
-  color: #ffecb3;
-  background-color: #78909c;
+  color: white;
   padding: 20px;
+  background-color: #687b7e;
 }
 
 .avatar-image {
@@ -173,10 +173,9 @@ li {
 .selectedOption {
   font-size: 18px;
   font-weight: bold;
-  letter-spacing: 0.15em;
 }
 
 .header-logo {
-  color: #ffecb3;
+  color: white;
   font-size: 24px;
 }

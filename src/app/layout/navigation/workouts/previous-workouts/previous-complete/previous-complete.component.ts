@@ -3,7 +3,6 @@ import {WorkoutService} from '../../../../../service/workout/workout.service';
 import {WorkoutView} from '../../../../../model/workout/WorkoutView';
 import {Observable} from 'rxjs';
 import {AuthenticatedUserService} from '../../../../../service/authentication-service/authenticated-user.service';
-import {ScheduledExerciseViewWrapper} from '../../../../../model/workout/ScheduledExerciseViewWrapper';
 import {MatDialog} from '@angular/material/dialog';
 import {CompletedWorkoutDialogComponent} from '../../../../../modules/show-completed-workout/completed-workout-dialog/completed-workout-dialog.component';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
@@ -19,7 +18,6 @@ import {CompletedWorkoutBottomSheetComponent} from '../../../../../modules/show-
 export class PreviousCompleteComponent implements OnInit {
 
   allWorkoutsForUser: Observable<WorkoutView[]>;
-  allTrainingDayViewsForWorkout: Observable<ScheduledExerciseViewWrapper[]>;
   isMobile$: Observable<boolean>;
 
   constructor(private workoutService: WorkoutService,
@@ -38,12 +36,6 @@ export class PreviousCompleteComponent implements OnInit {
     this.allWorkoutsForUser = this.workoutService.getWorkoutViewsByUserId(this.authenticatedUser.user.id);
   }
 
-  // todo: investigate the use of the training day summary view.
-
-  // setAllTrainingDayViews(workoutId: bigint) {
-  //   this.allTrainingDayViewsForWorkout = this.workoutService.getTrainingDayViewsByWorkoutId(workoutId);
-  // }
-
   openCompletedWorkoutDialog(workout: WorkoutView) {
 
     this.isMobile$.subscribe(
@@ -51,14 +43,16 @@ export class PreviousCompleteComponent implements OnInit {
         if (response) {
           this.bottomSheet.open(CompletedWorkoutBottomSheetComponent, {
             data: {
-              workout
+              workout,
+              trainingDayId: null
             },
             hasBackdrop: true
           });
         } else {
           this.dialog.open(CompletedWorkoutDialogComponent, {
             data: {
-              workout
+              workout,
+              trainingDayId: null
             },
             width: '75%'
           });

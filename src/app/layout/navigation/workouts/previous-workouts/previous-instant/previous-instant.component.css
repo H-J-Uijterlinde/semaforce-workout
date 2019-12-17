@@ -1,0 +1,16 @@
+mat-card {
+  width: 90%;
+  max-width: 500px;
+  margin: 15px auto;
+  background-color: #fff8e1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+button {
+  width: 95%;
+  border: solid 1px #37474f;
+  color: #37474f;
+}

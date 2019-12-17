@@ -9,11 +9,6 @@ mat-card {
   text-align: center;
 }
 
-mat-expansion-panel {
-  box-shadow: none !important;
-  background-color: inherit;
-}
-
 button {
   width: 95%;
   border: solid 1px #37474f;

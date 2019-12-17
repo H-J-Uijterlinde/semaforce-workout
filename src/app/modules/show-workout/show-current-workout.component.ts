@@ -8,6 +8,7 @@ import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {WorkoutView} from '../../model/workout/WorkoutView';
+import {AuthenticatedUserService} from '../../service/authentication-service/authenticated-user.service';
 
 @Component({
   selector: 'app-show-current-workout',
@@ -22,7 +23,6 @@ export class ShowCurrentWorkoutComponent implements OnInit {
   trainingDay: TrainingDayView;
   exercises: ScheduledExercise[] = [];
   results: WeeklyResult[] = [];
-  isFirstInit = true;
 
   currentWeek: number;
 
@@ -30,7 +30,8 @@ export class ShowCurrentWorkoutComponent implements OnInit {
               public router: Router,
               private workoutService: WorkoutService,
               private resultsService: ResultService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private authenticatedUser: AuthenticatedUserService) {
   }
 
   ngOnInit() {
@@ -46,7 +47,9 @@ export class ShowCurrentWorkoutComponent implements OnInit {
     this.currentWeek = this.trainingDay.currentWeek;
     this.exercises = Object.values(this.trainingDay.scheduledExercises);
     this.exercises.forEach((exercise, index) => {
-      exercise.results.weeklyResults[this.currentWeek] = (new WeeklyResult(index + 1, this.currentWeek, [], [], [], null, exercise.exercise.id));
+      exercise.results.weeklyResults[this.currentWeek] =
+        (new WeeklyResult(index + 1, this.currentWeek,
+          [], [], [], null, exercise.exercise.id));
     });
   }
 
@@ -107,7 +110,7 @@ export class ShowCurrentWorkoutComponent implements OnInit {
         }
       );
 
-      this.resultsService.addResult(this.trainingDay.id, this.results).subscribe(
+      this.resultsService.addResult(this.trainingDay.id, this.authenticatedUser.user.id, this.results).subscribe(
         response => {
           this.resetTrainingDay(response);
           this.snackBar.open('Results saved!', null, {duration: 3000});

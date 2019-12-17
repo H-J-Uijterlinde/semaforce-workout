@@ -16,10 +16,6 @@ mat-tab-group {
   margin-left: 25px;
 }
 
-::ng-deep.mat-tab-labels {
-  background-color: rgba(255, 255, 255, 0.65);
-}
-
 ::ng-deep.mat-tab-label {
   font-size: 16px;
   font-weight: bolder;

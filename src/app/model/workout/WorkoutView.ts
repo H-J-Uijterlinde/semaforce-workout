@@ -5,7 +5,8 @@ export class WorkoutView {
     public referenceName: string,
     public numWeeks: number,
     public daysPerWeek: number,
-    public currentDay: number
+    public currentDay: number,
+    public startedDate: Date
   ) {
   }
 }

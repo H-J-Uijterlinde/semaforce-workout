@@ -52,7 +52,7 @@ export class CreateWorkoutComponent implements OnInit {
   populateExerciseNumbersPerDay() {
     for (let i = 1; i <= this.workout.daysPerWeek; i++) {
       this.exerciseNumbersPerDay[i - 1] = [];
-      this.workout.trainingDays.push(new TrainingDay(i, []));
+      this.workout.trainingDays.push(new TrainingDay(this.authenticatedUser.user, i, []));
     }
   }
 
