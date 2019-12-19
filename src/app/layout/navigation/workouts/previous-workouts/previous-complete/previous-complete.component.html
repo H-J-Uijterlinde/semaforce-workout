@@ -1,3 +1,7 @@
+<mat-card *ngIf="(allWorkoutsForUser | async).length < 1">
+  <mat-card-title>You have not created any complete workout routines yet!</mat-card-title>
+</mat-card>
+
 <mat-card *ngFor="let workoutView of allWorkoutsForUser | async">
   <mat-card-title>{{workoutView.referenceName}}</mat-card-title>
   <mat-card-subtitle>{{workoutView.daysPerWeek > 1 ? workoutView.daysPerWeek + ' days' : workoutView.daysPerWeek + ' day'}}

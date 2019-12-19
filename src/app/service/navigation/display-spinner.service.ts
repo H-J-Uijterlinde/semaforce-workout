@@ -13,9 +13,11 @@ export class DisplaySpinnerService {
       event => {
         if (event instanceof NavigationStart) {
           this.displaySpinner = true;
+          console.log('spinner started');
         }
         if (event instanceof NavigationEnd) {
           this.displaySpinner = false;
+          console.log('spinner ended');
         }
       }
     );

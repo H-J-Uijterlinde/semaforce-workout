@@ -1,3 +1,7 @@
+<mat-card *ngIf="(trainingDayMiniViews$ | async).length < 1">
+  <mat-card-title>You have not performed any instant training days yet!</mat-card-title>
+</mat-card>
+
 <mat-card *ngFor="let trainingDayMiniView of trainingDayMiniViews$ | async">
   <mat-card-title>Training completed on: {{trainingDayMiniView.createdDate | date}}</mat-card-title>
   <mat-card-actions>

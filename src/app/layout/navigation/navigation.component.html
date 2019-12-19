@@ -5,16 +5,19 @@
       <mat-icon class="menu-icon">menu</mat-icon>
     </button>
     <a routerLink="/home"
-    class="header-logo">
+       class="header-logo">
       Semaforce
     </a>
 
     <span class="logo"></span>
 
-    <mat-spinner
-      diameter="35"
-      color="'white'"
-      *ngIf="displaySpinnerService.displaySpinner"></mat-spinner>
+    <div class="header-spinner"
+      *ngIf="displaySpinnerService.displaySpinner">
+      <mat-spinner
+        diameter="35"
+        color="warn">
+      </mat-spinner>
+    </div>
     <a class="header-item" routerLink="/logout">
       Log Out
     </a>
@@ -43,7 +46,7 @@
     <mat-nav-list>
       <mat-accordion>
         <a routerLink="/workouts/home"
-          routerLinkActive="selectedOption"
+           routerLinkActive="selectedOption"
           [routerLinkActiveOptions]="{exact: true}"
            mat-list-item>Workout Center
         </a>
