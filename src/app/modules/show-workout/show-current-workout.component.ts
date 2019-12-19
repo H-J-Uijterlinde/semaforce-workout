@@ -31,7 +31,7 @@ export class ShowCurrentWorkoutComponent implements OnInit {
               private workoutService: WorkoutService,
               private resultsService: ResultService,
               private snackBar: MatSnackBar,
-              private authenticatedUser: AuthenticatedUserService) {
+              public authenticatedUser: AuthenticatedUserService) {
   }
 
   ngOnInit() {
